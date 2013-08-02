@@ -1,0 +1,134 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1375443797" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="WebHome"}%
+%ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
+jQuery(function($) {
+  $('.foswikiEditFormDateField').livequery(function() {$(this).attr('readonly', 'readonly');});
+});
+</script>"}%
+
+
+%JQREQUIRE{"ui::dialog, ui::button, textboxlist, blockui"}%
+%TMPL:INCLUDE{view}%
+
+%TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
+
+%INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
+
+<table border="0" cellpadding="10" cellspacing="0">
+<tr><td  bgcolor="#AAAAAA" colspan="8" style="border:medium solid #000"><b>%MAKETEXT{"Project outline data"}%</b></td></tr>
+<tr><td>%MAKETEXT{"Number"}%:</td><td width="150px" style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="No" format="$value"}%</td><td rowspan="13"></td><td>%MAKETEXT{"Order number"}%:</td><td width="150px" style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="OrderNo" format="$value"}%</td><td rowspan="13"></td><td>%MAKETEXT{"Booking number"}%:</td><td width="150px" style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="BookingNo" format="$value"}%</td></tr>
+<tr><td>%MAKETEXT{"Customer"}%:</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="Customer" format="$value"}%</td><td>%MAKETEXT{"MachineType"}%:</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="MachineType" format="$value"}%</td><td>%MAKETEXT{"Contact person sales"}%:</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="ContactPersonSales" format="$value"}%</td></tr>
+<tr><td>%MAKETEXT{"Order volume"}%:</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="OrderVolume" format="$value"}%</td><td>%MAKETEXT{"Penalty"}%:</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="Penalty" format="$value"}%</td><td>%MAKETEXT{"Status"}%:</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="Status" format="$value"}%</td></tr>
+<tr><td colspan="8"></td></tr>
+<tr><td  bgcolor="#AAAAAA" colspan="8" style="border:medium solid #000"><b>Q-Gates / %MAKETEXT{"basic dates"}%</b></td></tr>
+<tr><td>QG1: %MAKETEXT{"Contruction"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td>QG2: %MAKETEXT{"Allocation"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG2DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG2Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td>QG3: %MAKETEXT{"Assembling"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG3DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG3Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td>QG4:  %MAKETEXT{"Initiation"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td>QG5: %MAKETEXT{"Delivery date"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG5DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG5Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td>QG6: %MAKETEXT{"Acceptance"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG6DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG6Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td>QG7: %MAKETEXT{"Last payment"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG7DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG7Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td>QG8: %MAKETEXT{"End of guarantee"}%</td><td style="border-bottom:1px solid #000">%RENDERFORDISPLAY{field="QG8DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG8Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td><td></td><td></td></tr>
+<tr><td colspan="8"></td></tr>
+<tr><td  bgcolor="#AAAAAA" colspan="8" style="border:medium solid #000"><b>%MAKETEXT{"Tasks"}%</b></td></tr>
+<tr><td colspan="8"><noautolink>
+%BUTTON{"%MAKETEXT{"Add task"}%" href="#actiondialog" class="jqUIDialogLink"}%
+%STARTSECTION{"actiondialog"}%
+<div id="actiondialog" title="%MAKETEXT{"Add task"}%" class="jqUIDialog {draggable:true, resizable: true, height:400, width:600}">
+%COMMENT{type="action3"  location="This should be unique text AIVOqxWgyT"}%
+</div>
+%ENDSECTION{"actiondialog"}%
+
+---++%MAKETEXT{"Tasks assigned to their Quality-Gates"}%
+%TABPANE{select="%URLPARAM{"tab"}%"}%
+%TAB{"QG1: %MAKETEXT{"Contruction"}%" id="qg1"}%
+<p>
+<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
+<input type="hidden" name="tab" value="qg1" />
+<table><tr><td>%INCLUDE{"ProjectViewTemplate" section="filter"}%</td><td>%CLEAR%%BUTTON{"%MAKETEXT{"Submit"}%" type="submit"}%%CLEAR%</td></tr></table>
+</form>
+</p>
+<div id="SignalQG1"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="1" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"QG2: %MAKETEXT{"Allocation"}%" id="qg2"}%
+<p>
+<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
+<input type="hidden" name="tab" value="qg2" />
+<table><tr><td>%INCLUDE{"ProjectViewTemplate" section="filter"}%</td><td>%CLEAR%%BUTTON{"%MAKETEXT{"Submit"}%" type="submit"}%%CLEAR%</td></tr></table>
+</form>
+</p>
+<div id="SignalQG2"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="2" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"QG3: %MAKETEXT{"Assembling"}%" id="qg3"}%
+<p>
+<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
+<input type="hidden" name="tab" value="qg3" />
+<table><tr><td>%INCLUDE{"ProjectViewTemplate" section="filter"}%</td><td>%CLEAR%%BUTTON{"%MAKETEXT{"Submit"}%" type="submit"}%%CLEAR%</td></tr></table>
+</form>
+</p>
+<div id="SignalQG3"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="3" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"QG4: %MAKETEXT{"Initiation"}%" id="qg4"}%
+<p>
+<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
+<input type="hidden" name="tab" value="qg4" />
+<table><tr><td>%INCLUDE{"ProjectViewTemplate" section="filter"}%</td><td>%CLEAR%%BUTTON{"%MAKETEXT{"Submit"}%" type="submit"}%%CLEAR%</td></tr></table>
+</form>
+</p>
+<div id="SignalQG4"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="4" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"QG5: %MAKETEXT{"Delivery date"}%" id="qg5"}%
+<p>
+<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
+<input type="hidden" name="tab" value="qg5" />
+<table><tr><td>%INCLUDE{"ProjectViewTemplate" section="filter"}%</td><td>%CLEAR%%BUTTON{"%MAKETEXT{"Submit"}%" type="submit"}%%CLEAR%</td></tr></table>
+</form>
+</p>
+<div id="SignalQG5"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="5" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%AMPEL{"SignalQG1" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG2" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG3" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG4" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG5" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percntTermin" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%ENDTABPANE%
+
+---++%MAKETEXT{"Tasks assigned to their status"}% 
+%TABPANE%
+%TAB{"%MAKETEXT{"My tasks"}%"}%
+<div id="SignalMyTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" who="%WIKINAME%" state="open" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"%MAKETEXT{"Open tasks"}%"}%
+<div id="SignalOpenTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="open" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"%MAKETEXT{"Closed tasks"}%"}%
+<div id="SignalClosedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="closed" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"%MAKETEXT{"Discarded tasks"}%"}%
+<div id="SignalDiscardedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="discarded" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%TAB{"%MAKETEXT{"All tasks"}%"}%
+<div id="SignalAllTasks"> %TABLE{sort="on"}%%ACTIONSEARCH{web="%WEB%" topic="%BASETOPIC%" sort="$createdate,$who,$due"}%</div>
+%ENDTAB%
+%AMPEL{"SignalMyTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalOpenTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalClosedTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalDiscardedTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalAllTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%ENDTABPANE%
+
+</noautolink>
+</td></tr>
+</table>
+
+
+<div style="display:none;">
+%STARTSECTION{"filter"}%
+<select name="state"><option value="open" %IF{"'%URLPARAM{"state"}%'='open'" then="selected"}%>%MAKETEXT{"Open tasks"}%</option><option value="closed" %IF{"'%URLPARAM{"state"}%'='closed'" then="selected"}%>%MAKETEXT{"Closed tasks"}%</option><option value="discarded" %IF{"'%URLPARAM{"state"}%'='discarded'" then="selected"}%>%MAKETEXT{"Discarded tasks"}%</option><option value="open|closed|discarded" %IF{"'%URLPARAM{"state"}%'='open|closed|discarded'" then="selected"}%>%MAKETEXT{"All tasks"}%</option></select>
+%ENDSECTION{"filter"}%
+</div>
+%TMPL:END%
+
+%META:TOPICMOVED{by="BaseUserMapping_333" date="1372866977" from="VorlageWiki/Projects.ProjectView" to="VorlageWiki/Projects.ProjectViewTemplate"}%
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminUser"}%
+%META:PREFERENCE{name="NOWYSIWYG" title="NOWYSIWYG" type="Set" value="1"}%

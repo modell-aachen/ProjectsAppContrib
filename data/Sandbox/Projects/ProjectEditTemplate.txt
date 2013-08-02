@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1372870078" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="DokumentenForm"}%
+%ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
+jQuery(function($) {
+  $('.foswikiEditFormDateField').livequery(function() {$(this).attr('readonly', 'readonly');});
+});
+</script>"}%
+
+%TMPL:INCLUDE{edit}%
+
+%TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
+%TMPL:P{"formstart"}%%TMPL:P{"formtop"}%
+
+%INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
+
+<table border="0" cellpadding="10" cellspacing="0">
+<tr><td  bgcolor="#AAAAAA" colspan="8" style="border:medium solid #000"><b>%MAKETEXT{"Project outline data"}%</b></td></tr>
+<tr><td>%MAKETEXT{"Number"}%:</td><td width="150px">%RENDERFOREDIT{field="No" format="$edit"}%</td><td rowspan="13"></td><td>%MAKETEXT{"Order number"}%:</td><td width="150px">%RENDERFOREDIT{field="OrderNo" format="$edit"}%</td><td rowspan="13"></td><td>%MAKETEXT{"Booking number"}%:</td><td width="150px">%RENDERFOREDIT{field="BookingNo" format="$edit"}%</td></tr>
+<tr><td>%MAKETEXT{"Customer"}%:</td><td>%RENDERFOREDIT{field="Customer" format="$edit"}%</td><td>%MAKETEXT{"MachineType"}%:</td><td>%RENDERFOREDIT{field="MachineType" format="$edit"}%</td><td>%MAKETEXT{"Contact person sales"}%:</td><td>%RENDERFOREDIT{field="ContactPersonSales" format="$edit"}%</td></tr>
+<tr><td>%MAKETEXT{"Order volume"}%:</td><td>%RENDERFOREDIT{field="OrderVolume" format="$edit"}%</td><td>%MAKETEXT{"Penalty"}%:</td><td>%RENDERFOREDIT{field="Penalty" format="$edit"}%</td><td>%MAKETEXT{"Status"}%:</td><td>%RENDERFOREDIT{field="Status" format="$edit"}%</td></tr>
+<tr><td colspan="8"></td></tr>
+<tr><td  bgcolor="#AAAAAA" colspan="8" style="border:medium solid #000"><b>Q-Gates / %MAKETEXT{"basic dates"}%</b></td></tr>
+<tr><td>QG1: %MAKETEXT{"Contruction"}%</td><td style="white-space:nowrap;">%RENDERFOREDIT{field="QG1DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG1Done" format="$edit"}% </td><td></td><td></td></tr>
+<tr><td>QG2: %MAKETEXT{"Allocation"}%</td><td>%RENDERFOREDIT{field="QG2DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG2Done" format="$edit"}% </td><td></td><td></td></tr>
+<tr><td>QG3: %MAKETEXT{"Assembling"}%</td><td>%RENDERFOREDIT{field="QG3DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG3Done" format="$edit"}% </td><td></td><td></td></tr>
+<tr><td>QG4: %MAKETEXT{"Initiation"}%</td><td>%RENDERFOREDIT{field="QG4DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG4Done" format="$edit"}% </td><td></td><td></td></tr>
+<tr><td>QG5: %MAKETEXT{"Delivery date"}%</td><td>%RENDERFOREDIT{field="QG5DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG5Done" format="$edit"}% </td><td></td><td></td></tr>
+<tr><td>QG6: %MAKETEXT{"Acceptance"}%</td><td>%RENDERFOREDIT{field="QG6DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG6Done" format="$edit"}% </td><td></td><td></td></tr>
+<tr><td>QG7: %MAKETEXT{"Last payment"}%</td><td>%RENDERFOREDIT{field="QG7DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG7Done" format="$edit"}% </td><td></td><td></td></tr>
+<tr><td>QG8: %MAKETEXT{"End of guarantee"}%</td><td>%RENDERFOREDIT{field="QG8DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="QG8Done" format="$edit"}% </td><td></td><td></td></tr>
+</table>
+%TMPL:P{"topicinfo"}%
+%TMPL:P{"formend"}%
+
+%TMPL:END%
+
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminUser"}%
+%META:PREFERENCE{name="NOWYSIWYG" title="NOWYSIWYG" type="Set" value="1"}%

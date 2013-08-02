@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1375442893" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="WebHome"}%
+| *Name* | *Type* | *Size* | *Values* | *Tooltip message* | *Attributes* |
+| No | text | 10 | | KaNummer | |
+| OrderNo | text | 10 | | order number | |
+| BookingNo | text | 10 | | booking number | |
+| Customer | text | | | Customer |  |
+| MachineType | text | | | Machine type | |
+| ContactPersonSales | text | | | Contact Person Sales | |
+| OrderVolume | text | | | volume of orders | |
+| Penalty | text | | | penalty | |
+| Status | select+values | 1 |  %MAKETEXT{"according to plan"}%=according to plan, %MAKETEXT{"to be discussed"}%=to be discussed, %MAKETEXT{"closed"}%=closed | | |
+| QG1DueDate | date | 10  |  | QG1 - due date | |
+| QG1Done | checkbox | 1 | done |  |  |
+| QG2DueDate | date | 10 |  | QG2-DueDate | |
+| QG2Done | checkbox | 1 | done |  |  |
+| QG3DueDate | date | 10 |  | QG3-DueDate | |
+| QG3Done | checkbox | 1 | done |  |  |
+| QG4DueDate | date | 10 |  | QG4-DueDate | |
+| QG4Done | checkbox | 1 | done |  |  |
+| QG5DueDate | date | 10 |  | QG5-DueDate | |
+| QG5Done | checkbox | 1 | done |  |  |
+| QG6DueDate | date | 10 |  | QG6-DueDate | |
+| QG6Done | checkbox | 1 | done |  |  |
+| QG7DueDate | date | 10 |  | QG7-DueDate | |
+| QG7Done | checkbox | 1 | done |  |  |
+| QG8DueDate | date | 10 |  | QG8-DueDate | |
+| QG8Done | checkbox | 1 | done |  |  |
+
+   * Set ALLOWTOPICCHANGE = AdminUser
+   * Set NOWYSIWYG = 1

@@ -1,0 +1,6 @@
+%META:TOPICINFO{author="VanHungDao" date="1346251044" format="1.1" version="1"}%
+<!--
+   * Set VIEW_TEMPLATE = ContentTemplatesView
+   * Set WORKFLOW =
+   * Set ALLOWTOPICCHANGE = AdminUser
+-->
