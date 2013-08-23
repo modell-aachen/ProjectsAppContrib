@@ -17,14 +17,16 @@ jQuery(function($) {
 <div class="widgetBlockContent">
 <div style="float:left;width:32%">
 <table class="metaDataHead">
-<tr><td>%MAKETEXT{"Number"}%:</td><td width="300px">%RENDERFORDISPLAY{field="No" format="$value"}%</td></tr>
+<tr><td>%MAKETEXT{"Title"}%:</td><td width="300px">%RENDERFORDISPLAY{field="Title" format="$value"}%</td></tr>
+<tr><td>%MAKETEXT{"Number"}%:</td><td>%RENDERFORDISPLAY{field="No" format="$value"}%</td></tr>
 <tr><td>%MAKETEXT{"Customer"}%:</td><td>%RENDERFORDISPLAY{field="Customer" format="$value"}%</td></tr>
 <tr><td>%MAKETEXT{"Order volume"}%:</td><td>%RENDERFORDISPLAY{field="OrderVolume" format="$value"}%</td></tr>
 </table>
 </div>
 <div style="float:left;width:32%;margin-left:2%;margin-right:2%;">
 <table class="metaDataHead">
-<tr><td>%MAKETEXT{"Order number"}%:</td><td width="300px">%RENDERFORDISPLAY{field="OrderNo" format="$value"}%</td></tr>
+<tr><td>%MAKETEXT{"Order volume"}%:</td><td widht="300px">%RENDERFORDISPLAY{field="OrderVolume" format="$value"}%</td></tr>
+<tr><td>%MAKETEXT{"Order number"}%:</td><td>%RENDERFORDISPLAY{field="OrderNo" format="$value"}%</td></tr>
 <tr><td>%MAKETEXT{"Machine type"}%:</td><td>%RENDERFORDISPLAY{field="MachineType" format="$value"}%</td></tr>
 <tr><td>%MAKETEXT{"Penalty"}%:</td><td>%RENDERFORDISPLAY{field="Penalty" format="$value"}%</td></tr>
 </table>

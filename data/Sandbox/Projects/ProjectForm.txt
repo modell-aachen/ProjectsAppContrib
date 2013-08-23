@@ -1,7 +1,8 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1375442893" format="1.1" reprev="3" version="4"}%
 %META:TOPICPARENT{name="WebHome"}%
 | *Name* | *Type* | *Size* | *Values* | *Tooltip message* | *Attributes* |
-| No | text | 10 | | KaNummer | |
+| Title | text | 10 | | Title | |
+| No | text | 10 | | Number | |
 | OrderNo | text | 10 | | order number | |
 | BookingNo | text | 10 | | booking number | |
 | Customer | text | | | Customer |  |

@@ -1,5 +1,6 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1375872645" format="1.1" reprev="3" version="3"}%
 %META:TOPICPARENT{name="DokumentenForm"}%
+
 %ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
 jQuery(function($) {
   $('.foswikiEditFormDateField').livequery(function() {$(this).attr('readonly', 'readonly');});
@@ -16,14 +17,15 @@ jQuery(function($) {
 <div class="widgetBlockContent">
 <div style="float:left;width:32%">
 <table class="metaDataHead">
-<tr><td>%MAKETEXT{"Number"}%:</td><td width="300px">%RENDERFOREDIT{field="No" format="$edit"}%</td></tr>
+<tr><td>%MAKETEXT{"Title"}%:</td><td width="300px">%RENDERFOREDIT{field="Title" format="$edit"}%</td></tr>
+<tr><td>%MAKETEXT{"Number"}%:</td><td>%RENDERFOREDIT{field="No" format="$edit"}%</td></tr>
 <tr><td>%MAKETEXT{"Customer"}%:</td><td>%RENDERFOREDIT{field="Customer" format="$edit"}%</td></tr>
-<tr><td>%MAKETEXT{"Order volume"}%:</td><td>%RENDERFOREDIT{field="OrderVolume" format="$edit"}%</td></tr>
 </table>
 </div>
 <div style="float:left;width:32%;margin-left:2%;margin-right:2%;">
 <table class="metaDataHead">
-<tr><td>%MAKETEXT{"Order number"}%:</td><td width="300px">%RENDERFOREDIT{field="OrderNo" format="$edit"}%</td></tr>
+<tr><td>%MAKETEXT{"Order volume"}%:</td><td width="300px">%RENDERFOREDIT{field="OrderVolume" format="$edit"}%</td></tr>
+<tr><td>%MAKETEXT{"Order number"}%:</td><td>%RENDERFOREDIT{field="OrderNo" format="$edit"}%</td></tr>
 <tr><td>%MAKETEXT{"Machine type"}%:</td><td>%RENDERFOREDIT{field="MachineType" format="$edit"}%</td></tr>
 <tr><td>%MAKETEXT{"Penalty"}%:</td><td>%RENDERFOREDIT{field="Penalty" format="$edit"}%</td></tr>
 </table>
