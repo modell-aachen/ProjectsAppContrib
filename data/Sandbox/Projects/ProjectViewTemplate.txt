@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1375952402" format="1.1" reprev="9" version="10"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1377250104" format="1.1" reprev="4" version="4"}%
 %META:TOPICPARENT{name="WebHome"}%
 %ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
 jQuery(function($) {
@@ -20,7 +20,6 @@ jQuery(function($) {
 <tr><td>%MAKETEXT{"Title"}%:</td><td width="300px">%RENDERFORDISPLAY{field="Title" format="$value"}%</td></tr>
 <tr><td>%MAKETEXT{"Number"}%:</td><td>%RENDERFORDISPLAY{field="No" format="$value"}%</td></tr>
 <tr><td>%MAKETEXT{"Customer"}%:</td><td>%RENDERFORDISPLAY{field="Customer" format="$value"}%</td></tr>
-<tr><td>%MAKETEXT{"Order volume"}%:</td><td>%RENDERFORDISPLAY{field="OrderVolume" format="$value"}%</td></tr>
 </table>
 </div>
 <div style="float:left;width:32%;margin-left:2%;margin-right:2%;">
