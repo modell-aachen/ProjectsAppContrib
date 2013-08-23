@@ -42,7 +42,7 @@ jQuery(function($) {
 <div class="widgetBlockTitle">Q-Gates / %MAKETEXT{"basic dates"}%</div>
 <div class="widgetBlockContent">
 <table class="metaDataHead">
-<tr><td width="200px">QG1: %MAKETEXT{"Contruction"}%</td><td width="200px">%RENDERFORDISPLAY{field="QG1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td width="200px">QG1: %MAKETEXT{"Construction"}%</td><td width="200px">%RENDERFORDISPLAY{field="QG1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG2: %MAKETEXT{"Allocation"}%</td><td>%RENDERFORDISPLAY{field="QG2DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG2Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG3: %MAKETEXT{"Assembling"}%</td><td>%RENDERFORDISPLAY{field="QG3DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG3Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG4:  %MAKETEXT{"Initiation"}%</td><td>%RENDERFORDISPLAY{field="QG4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
