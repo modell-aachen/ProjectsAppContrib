@@ -1,12 +1,12 @@
 # See bottom of file for default license and copyright information
-package Foswiki::Contrib::ProjetcsAppContrib;
+package Foswiki::Contrib::ProjectsAppContrib;
 use strict;
 use warnings;
 
 our $VERSION = '$Rev$';
 our $RELEASE = '1.12';
 
-our $SHORTDESCRIPTION = 'Modell Aachen Projetcs WikiApp';
+our $SHORTDESCRIPTION = 'Modell Aachen Projects WikiApp';
 
 1;
 
