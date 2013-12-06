@@ -3,7 +3,7 @@ package Foswiki::Contrib::ProjectsAppContrib;
 use strict;
 use warnings;
 
-our $VERSION = '$Rev$';
+our $VERSION = '1';
 our $RELEASE = "1";
 
 our $SHORTDESCRIPTION = 'Modell Aachen Projects WikiApp';
