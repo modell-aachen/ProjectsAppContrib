@@ -2,7 +2,7 @@
 <div class="widgetBlockTitle">%MAKETEXT{"Create new project"}%</div>
 <div class="widgetBlockContent">
 %INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
-<form action="/bin/save/%WEB%/ProjectAUTOINC000" method="post" name="%WEB%">
+<form action="%SCRIPTURLPATH{save}%/%WEB%/ProjectAUTOINC000" method="post" name="%WEB%">
 <input type="hidden" name="formtemplate" value="ProjectForm">
 <input type="hidden" name="templatetopic" value="ProjectTemplate">
 <input type="hidden" name="action_quietsave" value="1">
