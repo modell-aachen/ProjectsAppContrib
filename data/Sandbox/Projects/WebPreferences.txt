@@ -50,7 +50,7 @@ Users or groups allowed to change or rename this <nop>%TOPIC% topic: (e.g., [[%U
    * Set ACTIONTRACKERPLUGIN_TABLEFORMAT = | $createdate | $creator | $percntSUBST{text="$who" pattern="^Main\." format=""}$percnt | $task | $text | $due<div style="display: none">($closed)</div> | $closed |  <div style="display: none">$state</div> ||$edit |
    * Set ACTIONTRACKERPLUGIN_EDITHEADER = | %MAKETEXT{"Task to"}% | %MAKETEXT{"Due date"}% | Status | %MAKETEXT{"Task"}% | QG | %MAKETEXT{"Task contents"}% |
    * Set ACTIONTRACKERPLUGIN_EDITFORMAT = | $who | $due | $state | $task | $qg |
-   * Set ACTIONTRACKERPLUGIN_USERS_AUTOCOMPLETE = %SCRIPTURL{"view"}%/%SYSTEMWEB%/JQueryAjaxHelper?section=user;skin=text;limit=10
+   * Set ACTIONTRACKERPLUGIN_USERS_AUTOCOMPLETE = %USERAUTOCOMPLETE%
    * Set ACTIONTRACKERPLUGIN_ENABLESTATESHORTCUT = 0
 ---
 

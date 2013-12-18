@@ -110,11 +110,11 @@ jQuery(function($) {
 </p>
 <div id="SignalQG5"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="5" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
 %ENDTAB%
-%AMPEL{"SignalQG1" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG2" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG3" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG4" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG5" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percntTermin" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG1" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG2" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG3" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG4" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalQG5" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percntTermin" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
 %ENDTABPANE%
 </div>
 
@@ -136,11 +136,11 @@ jQuery(function($) {
 %TAB{"%MAKETEXT{"All tasks"}%"}%
 <div id="SignalAllTasks"> %TABLE{sort="on"}%%ACTIONSEARCH{web="%WEB%" topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
 %ENDTAB%
-%AMPEL{"SignalMyTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalOpenTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalClosedTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalDiscardedTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalAllTasks" WARN="7" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalMyTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalOpenTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalClosedTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalDiscardedTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%AMPEL{"SignalAllTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
 %ENDTABPANE%
 </noautolink>
 </div>
