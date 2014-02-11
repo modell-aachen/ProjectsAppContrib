@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1377250104" format="1.1" reprev="4" version="4"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392109145" format="1.1" reprev="2" version="2"}%
 %META:TOPICPARENT{name="WebHome"}%
 %ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
 jQuery(function($) {
@@ -6,8 +6,61 @@ jQuery(function($) {
 });
 </script>"}%
 
+%ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/protocol.js\"></script>
+<style>@import url('%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/printbutton.css');</style>"}%
+
+%ADDTOZONE{"head" text="<style type='text/css' media='print'>
+.noprint { display:none }
+</style>"}%
+
 %JQREQUIRE{"ui::dialog, ui::button, textboxlist, blockui"}%
 %TMPL:INCLUDE{view}%
+
+%{
+ This will generate a tab for a JQuery TABPANE.
+ If there are multiple ways available to generate this tab, here would be the appropriate place to decide which one to use.
+ By default it will create a tab that fetches its contents via ajax but not if this the print cover is being used.
+
+ Parameters:
+   * section: Template definition to appear in the tab (like TMPL:P{%section%}).
+   * label: Label for the tab.
+   * id: Id-parameter for the tab.
+   * noprint: If this section should be printed by default, you can issue it to be printed with the url-parameter printTab=%section%.
+}%
+%TMPL:DEF{"modacTab"}%%IF{"$'URLPARAM{cover}' = 'print' and ('%noprint%' != '1' and $'URLPARAM{printTab}'='' or $'URLPARAM{printTab}'='%section%')"
+then="$percntTMPL:P{\"modacNoAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%section%\"}$percent"
+else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%section%\"}$percent"
+}% %TMPL:END%
+
+%{
+ This will generate a tab without the need to fetch contents per ajax. This tab can be printed.
+
+ Parameters: section, label and id like modacTab
+}%
+%TMPL:DEF{"modacNoAjaxTab"}%%TAB{"%label%" id="%id%"}%
+%TMPL:P{"%section%"}%
+%ENDTAB%%TMPL:END%
+
+%{
+ This will generate a tab that will fetch its contents via ajax. This tab can not be printed.
+
+ Parameters: section, label and id like modacTab
+}%
+%TMPL:DEF{"modacAjaxTab"}%%TAB{"%label%" id="%id%" url="%SCRIPTURLPATH{rest}%/RenderPlugin/template?topic=%WEB%.%TOPIC%;expand=%section%;render=on;name=ProjectView"}%
+<span class="jqAjaxLoader">&nbsp;</span>
+%ENDTAB%%TMPL:END%
+
+%{ Unfortunately I need these definitions because TMPL:P parameters must not contain quotes. }%
+%TMPL:DEF{"q1_label"}%QG1: %MAKETEXT{"Construction"}%%TMPL:END%
+%TMPL:DEF{"q2_label"}%QG2: %MAKETEXT{"Allocation"}%%TMPL:END%
+%TMPL:DEF{"q3_label"}%QG3: %MAKETEXT{"Assembling"}%%MAKETEXT{"My tasks"}%%TMPL:END%
+%TMPL:DEF{"q4_label"}%QG4: %MAKETEXT{"Initiation"}%%TMPL:END%
+%TMPL:DEF{"q5_label"}%QG5: %MAKETEXT{"Delivery date"}%%TMPL:END%
+%TMPL:DEF{"mine_label"}%%MAKETEXT{"My tasks"}%%TMPL:END%
+%TMPL:DEF{"open_label"}%%MAKETEXT{"Open tasks"}%%TMPL:END%
+%TMPL:DEF{"closed_label"}%%MAKETEXT{"Closed tasks"}%%TMPL:END%
+%TMPL:DEF{"discarded_label"}%%MAKETEXT{"Discarded tasks"}%%TMPL:END%
+%TMPL:DEF{"all_label"}%%MAKETEXT{"All tasks"}%%TMPL:END%
 
 %TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
 
@@ -46,7 +99,7 @@ jQuery(function($) {
 <tr><td width="200px">QG1: %MAKETEXT{"Construction"}%</td><td width="200px">%RENDERFORDISPLAY{field="QG1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG2: %MAKETEXT{"Allocation"}%</td><td>%RENDERFORDISPLAY{field="QG2DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG2Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG3: %MAKETEXT{"Assembling"}%</td><td>%RENDERFORDISPLAY{field="QG3DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG3Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>QG4:  %MAKETEXT{"Initiation"}%</td><td>%RENDERFORDISPLAY{field="QG4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>QG4: %MAKETEXT{"Initiation"}%</td><td>%RENDERFORDISPLAY{field="QG4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG5: %MAKETEXT{"Delivery date"}%</td><td>%RENDERFORDISPLAY{field="QG5DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG5Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG6: %MAKETEXT{"Acceptance"}%</td><td>%RENDERFORDISPLAY{field="QG6DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG6Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 <tr><td>QG7: %MAKETEXT{"Last payment"}%</td><td>%RENDERFORDISPLAY{field="QG7DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/QG7Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
@@ -56,106 +109,127 @@ jQuery(function($) {
 
 <div class="widgetBlockTitle">%MAKETEXT{"Tasks"}%</div>
 <div class="widgetBlockContent">
+<div class="noprint">
 %BUTTON{"%MAKETEXT{"Add task"}%" href="#actiondialog" class="jqUIDialogLink"}%
 %STARTSECTION{"actiondialog"}%
 <div id="actiondialog" title="%MAKETEXT{"Add task"}%" class="jqUIDialog {draggable:true, resizable: true, height:400, width:600}">
 %COMMENT{type="action3"  location="This should be unique text AIVOqxWgyT"}%
 </div>
+</div>
 %ENDSECTION{"actiondialog"}%
+
 <div class="widgetBlockTitle">%MAKETEXT{"Tasks assigned to their Quality-Gates"}%</div>
 <div class="widgetBlockContent">
 %TABPANE{select="%URLPARAM{"tab"}%" class="simple"}%
-%TAB{"QG1: %MAKETEXT{"Construction"}%" id="qg1"}%
-<p>
-<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
-<input type="hidden" name="tab" value="qg1" />
-%INCLUDE{"ProjectViewTemplate" section="filter"}%
-</form>
-</p>
-<div id="SignalQG1"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="1" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"QG2: %MAKETEXT{"Allocation"}%" id="qg2"}%
-<p>
-<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
-<input type="hidden" name="tab" value="qg2" />
-%INCLUDE{"ProjectViewTemplate" section="filter"}%
-</form>
-</p>
-<div id="SignalQG2"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="2" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"QG3: %MAKETEXT{"Assembling"}%" id="qg3"}%
-<p>
-<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
-<input type="hidden" name="tab" value="qg3" />
-%INCLUDE{"ProjectViewTemplate" section="filter"}%
-</form>
-</p>
-<div id="SignalQG3"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="3" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"QG4: %MAKETEXT{"Initiation"}%" id="qg4"}%
-<p>
-<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
-<input type="hidden" name="tab" value="qg4" />
-%INCLUDE{"ProjectViewTemplate" section="filter"}%
-</form>
-</p>
-<div id="SignalQG4"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="4" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"QG5: %MAKETEXT{"Delivery date"}%" id="qg5"}%
-<p>
-<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
-<input type="hidden" name="tab" value="qg5" />
-%INCLUDE{"ProjectViewTemplate" section="filter"}%
-</form>
-</p>
-<div id="SignalQG5"> %ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" qg="5" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%AMPEL{"SignalQG1" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG2" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG3" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG4" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalQG5" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percntTermin" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{q1_label}$percent" id="tasks_q1" section="tasks_q1"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{q2_label}$percent" id="tasks_q2" section="tasks_q2"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{q3_label}$percent" id="tasks_q3" section="tasks_q3"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{q4_label}$percent" id="tasks_q4" section="tasks_q4"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{q5_label}$percent" id="tasks_q5" section="tasks_q5"}%
+%AMPEL{"SignalQG1" %AMPEL_OPT%}%
+%AMPEL{"SignalQG2" %AMPEL_OPT%}%
+%AMPEL{"SignalQG3" %AMPEL_OPT%}%
+%AMPEL{"SignalQG4" %AMPEL_OPT%}%
+%AMPEL{"SignalQG5" %AMPEL_OPT%}%
 %ENDTABPANE%
 </div>
 
 <div class="widgetBlockTitle">%MAKETEXT{"Tasks assigned to their status"}% </div>
 <div class="widgetBlockContent">
 %TABPANE{class="simple"}%
-%TAB{"%MAKETEXT{"My tasks"}%"}%
-<div id="SignalMyTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" who="%WIKINAME%" state="open" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"%MAKETEXT{"Open tasks"}%"}%
-<div id="SignalOpenTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="open" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"%MAKETEXT{"Closed tasks"}%"}%
-<div id="SignalClosedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="closed" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"%MAKETEXT{"Discarded tasks"}%"}%
-<div id="SignalDiscardedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="discarded" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%TAB{"%MAKETEXT{"All tasks"}%"}%
-<div id="SignalAllTasks"> %TABLE{sort="on"}%%ACTIONSEARCH{web="%WEB%" topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
-%ENDTAB%
-%AMPEL{"SignalMyTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalOpenTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalClosedTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalDiscardedTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
-%AMPEL{"SignalAllTasks" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{mine_label}$percent" id="tasks_mine" section="tasks_mine"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{open_label}$percent" id="tasks_open" section="tasks_open"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{closed_label}$percent" id="tasks_closed" section="tasks_closed"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{discarded_label}$percent" id="tasks_discarded" section="tasks_discarded"}%
+%TMPL:P{"modacTab" label="$percentTMPL:P{all_label}$percent" id="tasks_all" section="tasks_all"}%
+%AMPEL{"SignalMyTasks" %AMPEL_OPT%}%
+%AMPEL{"SignalOpenTasks" %AMPEL_OPT%}%
+%AMPEL{"SignalClosedTasks" %AMPEL_OPT%}%
+%AMPEL{"SignalDiscardedTasks" %AMPEL_OPT%}%
+%AMPEL{"SignalAllTasks" %AMPEL_OPT%}%
 %ENDTABPANE%
 </noautolink>
 </div>
 </div>
-<div style="display:none;">
+%TMPL:END%
 
-%STARTSECTION{"filter"}%
-<form>
-<input type="hidden" name="param" value="%WEB%.%TOPIC%"/>
-<input type="hidden" name="section" value="%tasks_section%"/>
-<input type="hidden" name="targetcontainer" value="%tasks_container%"/>
-<select name="state"onChange="this.form.submit()"><option value="open" %IF{"'%URLPARAM{"state"}%'='open'" then="selected"}%>%MAKETEXT{"Open tasks"}%</option><option value="closed" %IF{"'%URLPARAM{"state"}%'='closed'" then="selected"}%>%MAKETEXT{"Closed tasks"}%</option><option value="discarded" %IF{"'%URLPARAM{"state"}%'='discarded'" then="selected"}%>%MAKETEXT{"Discarded tasks"}%</option><option value="open|closed|discarded" %IF{"'%URLPARAM{"state"}%'='open|closed|discarded'" then="selected"}%>%MAKETEXT{"All tasks"}%</option></select>
+%TMPL:DEF{"task_filter"}%
+<form name="input" action="%SCRIPTURL{"view"}%/%BASEWEB%/%BASETOPIC%" method="get">
+<input type="hidden" name="tab" value="%opentab%">
+<select name="state" onChange="this.form.submit()"><option value="open" %IF{"'%URLPARAM{"state"}%'='open'" then="selected"}%>%MAKETEXT{"Open tasks"}%</option><option value="closed" %IF{"'%URLPARAM{"state"}%'='closed'" then="selected"}%>%MAKETEXT{"Closed tasks"}%</option><option value="discarded" %IF{"'%URLPARAM{"state"}%'='discarded'" then="selected"}%>%MAKETEXT{"Discarded tasks"}%</option><option value="open|closed|discarded" %IF{"'%URLPARAM{"state"}%'='open|closed|discarded'" then="selected"}%>%MAKETEXT{"All tasks"}%</option></select>
 </form>
-%ENDSECTION{"filter"}%
-</div>
+%TMPL:END%
+
+%{ Contents for the 'q1' tab. }%
+%TMPL:DEF{"tasks_q1"}%
+%TMPL:P{"printButton" section="tasks_q1"}%
+%TMPL:P{"task_filter" opentab="1"}%
+<div id="SignalQG1">%ACTIONSEARCH{qg="1" web="%WEB%" topic="%BASETOPIC%" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'q2' tab. }%
+%TMPL:DEF{"tasks_q2"}%
+%TMPL:P{"printButton" section="tasks_q2"}%
+%TMPL:P{"task_filter" opentab="2"}%
+<div id="SignalQG2">%ACTIONSEARCH{qg="2" web="%WEB%"  topic="%BASETOPIC%" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'q3' tab. }%
+%TMPL:DEF{"tasks_q3"}%
+%TMPL:P{"printButton" section="tasks_q3"}%
+%TMPL:P{"task_filter" opentab="3"}%
+<div id="SignalQG3">%ACTIONSEARCH{qg="3" web="%WEB%"  topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'q4' tab. }%
+%TMPL:DEF{"tasks_q4"}%
+%TMPL:P{"printButton" section="tasks_q4"}%
+%TMPL:P{"task_filter" opentab="4"}%
+<div id="SignalQG4">%ACTIONSEARCH{qg="4" web="%WEB%"  topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'q5' tab. }%
+%TMPL:DEF{"tasks_q5"}%
+%TMPL:P{"printButton" section="tasks_q5"}%
+%TMPL:P{"task_filter" opentab="5"}%
+<div id="SignalQG5">%ACTIONSEARCH{qg="5" web="%WEB%"  topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'my tasks' tab. }%
+%TMPL:DEF{"tasks_mine"}%
+%TMPL:P{"printButton" section="tasks_mine"}%
+<div id="SignalMyTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" who="%WIKINAME%" state="open" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'open tasks' tab. }%
+%TMPL:DEF{"tasks_open"}%
+%TMPL:P{"printButton" section="tasks_open"}%
+<div id="SignalOpenTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="open" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'closed tasks' tab. }%
+%TMPL:DEF{"tasks_closed"}%
+%TMPL:P{"printButton" section="tasks_closed"}%
+<div id="SignalClosedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="closed" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'discarded tasks' tab. }%
+%TMPL:DEF{"tasks_discarded"}%
+%TMPL:P{"printButton" section="tasks_discarded"}%
+<div id="SignalDiscardedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="discarded" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%{ Contents for the 'all tasks' tab. }%
+%TMPL:DEF{"tasks_all"}%
+%TMPL:P{"printButton" section="tasks_all"}%
+<div id="SignalAllTasks"> %TABLE{sort="on"}%%ACTIONSEARCH{web="%WEB%" topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+%TMPL:END%
+
+%TMPL:DEF{"printButton"}%%IF{"context MAPrinceModPluginEnabled"
+then="<div class='atpExportFrame'><a href=\"%SCRIPTURL{"view"}%/%SYSTEMWEB%/MAPrinceModPrintDialog?skin=text&section=dialog&pweb=%ENCODE{"%INCLUDINGWEB%" type="url"}%&ptopic=%ENCODE{"%INCLUDINGTOPIC%" type="url"}%&landscape=%LANDSCAPE{default="0"}%&printParams=printTab,DaysClosed&printTab=%section%&DaysClosed=%URLPARAM{"DaysClosed"}%\" class=\"jqUIDialogLink {cache:false} modacPrintHide atpExportButton\" title='%MAKETEXT{"Export these tasks to PDF"}%'>$percentICON{pdf}$percent</a></div>" else="<!-- no print -->"}%%TMPL:END%
+
+%TMPL:DEF{"preferences"}%
+   * Set AMPEL_OPT = WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"
 %TMPL:END%
 
 %META:TOPICMOVED{by="BaseUserMapping_333" date="1372866977" from="VorlageWiki/Projects.ProjectView" to="VorlageWiki/Projects.ProjectViewTemplate"}%

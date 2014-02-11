@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1375782529" format="1.1" reprev="5" version="6"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1392108421" format="1.1" reprev="5" version="2"}%
 ---+!! <nop>%WEB% Web Preferences
 
 %TOC%
@@ -17,8 +17,6 @@
 
    * Set NOSEARCHALL = 
       * if set to =on=, this web will be exclude web from a global search
-
-   * Set FOSWIKI_PROJECT_URL = /pub/Custom/AppThemeCSS/apptheme.css
 
 ---++ Wiki application settings
 

@@ -20,3 +20,5 @@ data/Sandbox/Projects/WebTopicList.txt 0644
 data/System/ProjectsAppContrib.txt 0644
 locale/ProjectsAppContrib/de.po 0644
 lib/Foswiki/Contrib/ProjectsAppContrib.pm 0644
+pub/System/ProjectsAppContrib/project.js 0644
+pub/System/ProjectsAppContrib/printbutton.css 0644
