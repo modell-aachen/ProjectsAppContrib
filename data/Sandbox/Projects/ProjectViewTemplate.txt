@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392109145" format="1.1" reprev="2" version="2"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392221155" format="1.1" reprev="2" version="2"}%
 %META:TOPICPARENT{name="WebHome"}%
 %ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
 jQuery(function($) {
@@ -6,7 +6,7 @@ jQuery(function($) {
 });
 </script>"}%
 
-%ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/protocol.js\"></script>
+%ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/project.js\"></script>
 <style>@import url('%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/printbutton.css');</style>"}%
 
 %ADDTOZONE{"head" text="<style type='text/css' media='print'>
@@ -114,6 +114,7 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %STARTSECTION{"actiondialog"}%
 <div id="actiondialog" title="%MAKETEXT{"Add task"}%" class="jqUIDialog {draggable:true, resizable: true, height:400, width:600}">
 %COMMENT{type="action3"  location="This should be unique text AIVOqxWgyT"}%
+<div style="display:none;">This should be unique text AIVOqxWgyT%ACTIONSEARCH{web="%WEB%" topic="DummyTopic"}%</div>
 </div>
 </div>
 %ENDSECTION{"actiondialog"}%
