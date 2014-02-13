@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1392108421" format="1.1" reprev="5" version="2"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1392306885" format="1.1" reprev="5" version="2"}%
 ---+!! <nop>%WEB% Web Preferences
 
 %TOC%
@@ -25,6 +25,9 @@
 
    * Set WEBFORMS =
       * Comma separated list of forms that can be attached to topics in this web. See [[%SYSTEMWEB%.DataForms][DataForms]] for more information.
+
+   * Set AMPEL_OPT = WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"
+
 
 ---++ Access control
 

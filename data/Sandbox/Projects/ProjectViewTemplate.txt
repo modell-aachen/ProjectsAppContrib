@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392221155" format="1.1" reprev="2" version="2"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392307710" format="1.1" reprev="2" version="2"}%
 %META:TOPICPARENT{name="WebHome"}%
 %ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
 jQuery(function($) {
@@ -161,77 +161,77 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 </form>
 %TMPL:END%
 
+%TMPL:DEF{"searchactions"}%
+%ACTIONSEARCH{qg="%qg%" who="%who%" web="%WEB%" topic="%BASETOPIC%" state="%URLPARAM{"state" default="%state%"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%
+%TMPL:END%
+
 %{ Contents for the 'q1' tab. }%
 %TMPL:DEF{"tasks_q1"}%
 %TMPL:P{"printButton" section="tasks_q1"}%
 %TMPL:P{"task_filter" opentab="1"}%
-<div id="SignalQG1">%ACTIONSEARCH{qg="1" web="%WEB%" topic="%BASETOPIC%" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalQG1">%TMPL:P{"searchactions" qg="1" who="*" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q2' tab. }%
 %TMPL:DEF{"tasks_q2"}%
 %TMPL:P{"printButton" section="tasks_q2"}%
 %TMPL:P{"task_filter" opentab="2"}%
-<div id="SignalQG2">%ACTIONSEARCH{qg="2" web="%WEB%"  topic="%BASETOPIC%" state="%URLPARAM{"state" default="open"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalQG2">%TMPL:P{"searchactions" qg="2" who="*" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q3' tab. }%
 %TMPL:DEF{"tasks_q3"}%
 %TMPL:P{"printButton" section="tasks_q3"}%
 %TMPL:P{"task_filter" opentab="3"}%
-<div id="SignalQG3">%ACTIONSEARCH{qg="3" web="%WEB%"  topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalQG3">%TMPL:P{"searchactions" qg="3" who="*" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q4' tab. }%
 %TMPL:DEF{"tasks_q4"}%
 %TMPL:P{"printButton" section="tasks_q4"}%
 %TMPL:P{"task_filter" opentab="4"}%
-<div id="SignalQG4">%ACTIONSEARCH{qg="4" web="%WEB%"  topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalQG4">%TMPL:P{"searchactions" qg="4" who="*" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q5' tab. }%
 %TMPL:DEF{"tasks_q5"}%
 %TMPL:P{"printButton" section="tasks_q5"}%
 %TMPL:P{"task_filter" opentab="5"}%
-<div id="SignalQG5">%ACTIONSEARCH{qg="5" web="%WEB%"  topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalQG5">%TMPL:P{"searchactions" qg="5" who="*" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'my tasks' tab. }%
 %TMPL:DEF{"tasks_mine"}%
 %TMPL:P{"printButton" section="tasks_mine"}%
-<div id="SignalMyTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" who="%WIKINAME%" state="open" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalMyTasks">%TMPL:P{"searchactions" qg="*" who="%WIKINAME%" state="*"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'open tasks' tab. }%
 %TMPL:DEF{"tasks_open"}%
 %TMPL:P{"printButton" section="tasks_open"}%
-<div id="SignalOpenTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="open" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalOpenTasks">%TMPL:P{"searchactions" qg="*" who="*" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'closed tasks' tab. }%
 %TMPL:DEF{"tasks_closed"}%
 %TMPL:P{"printButton" section="tasks_closed"}%
-<div id="SignalClosedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="closed" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalClosedTasks">%TMPL:P{"searchactions" qg="*" who="*" state="closed"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'discarded tasks' tab. }%
 %TMPL:DEF{"tasks_discarded"}%
 %TMPL:P{"printButton" section="tasks_discarded"}%
-<div id="SignalDiscardedTasks"> %TABLE{sort="on" headerrows="1"}%%ACTIONSEARCH{web="%WEB%"  topic="%BASETOPIC%" state="discarded" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalDiscardedTasks">%TMPL:P{"searchactions" qg="*" who="*" state="discarded"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'all tasks' tab. }%
 %TMPL:DEF{"tasks_all"}%
 %TMPL:P{"printButton" section="tasks_all"}%
-<div id="SignalAllTasks"> %TABLE{sort="on"}%%ACTIONSEARCH{web="%WEB%" topic="%BASETOPIC%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%</div>
+<div id="SignalAllTasks">%TMPL:P{"searchactions" qg="*" who="*" state="*"}%</div>
 %TMPL:END%
 
 %TMPL:DEF{"printButton"}%%IF{"context MAPrinceModPluginEnabled"
 then="<div class='atpExportFrame'><a href=\"%SCRIPTURL{"view"}%/%SYSTEMWEB%/MAPrinceModPrintDialog?skin=text&section=dialog&pweb=%ENCODE{"%INCLUDINGWEB%" type="url"}%&ptopic=%ENCODE{"%INCLUDINGTOPIC%" type="url"}%&landscape=%LANDSCAPE{default="0"}%&printParams=printTab,DaysClosed&printTab=%section%&DaysClosed=%URLPARAM{"DaysClosed"}%\" class=\"jqUIDialogLink {cache:false} modacPrintHide atpExportButton\" title='%MAKETEXT{"Export these tasks to PDF"}%'>$percentICON{pdf}$percent</a></div>" else="<!-- no print -->"}%%TMPL:END%
-
-%TMPL:DEF{"preferences"}%
-   * Set AMPEL_OPT = WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="$percntMAKETEXT{\"Due date\"}$percnt" DST="$percntMAKETEXT{\"Signal\"}$percnt" DONE="Status" COND="closed"
-%TMPL:END%
 
 %META:TOPICMOVED{by="BaseUserMapping_333" date="1372866977" from="VorlageWiki/Projects.ProjectView" to="VorlageWiki/Projects.ProjectViewTemplate"}%
 %META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminUser"}%
