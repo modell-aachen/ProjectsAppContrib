@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1384872214" format="1.1" reprev="3" version="2"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1399630911" format="1.1" reprev="3" version="3"}%
 <div class="widgetBlockTitle">%MAKETEXT{"Create new project"}%</div>
 <div class="widgetBlockContent">
 %INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
@@ -27,9 +27,10 @@ div#AmpelQG1 table td { text-align: center; }
 %TABLE{%TABLETHEMEPARAM%}%
 | *%MAKETEXT{"Title"}%* | *%MAKETEXT{"Project"}%* | *%MAKETEXT{"Number"}%* | *%MAKETEXT{"Customer"}%* | *%MAKETEXT{"Machine type"}%* | *QG1-%MAKETEXT{"Construction"}%* | *QG2-%MAKETEXT{"Allocation"}%* | *QG3-%MAKETEXT{"Assembling"}%* | *QG4-%MAKETEXT{"Initiation"}%* | *QG5-%MAKETEXT{"Delivery date"}%* | *%MAKETEXT{"Status"}%* |
 %SOLRSEARCH{ "field_Status_s:(according?to?plan OR to?be?discussed)"
-web="%WEB%" 
+web="%WEB%"
+fields=" web, topic, field_Title_s, field_No_s, field_Customer_s, field_MachineType_s, field_QG1DueDate_dt, field_QG2DueDate_dt, field_QG3DueDate_dt, field_QG4DueDate_dt, field_QG5DueDate_dt, field_Status_s" 
 header="" 
-format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_Title_s'=~'^\$'\" then=\"$topic\" else=\"$field_Title_s\"}$percnt</a> | $topic</td><td>$percntIF{\"'$field_No_s'=~'^\$'\" then=\"\" else=\"$field_No_s\"}$percnt | $percntIF{\"'$field_Customer_s'=~'^\$'\" then=\"\" else=\"$field_Customer_s\"}$percnt |  $percntIF{\"'$field_MachineType_s'=~'^\$'\" then=\"\" else=\"$field_MachineType_s\"}$percnt | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG1DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG1DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG1Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG2DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG2DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG2Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG3DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG3DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG3Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG4DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG4DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG4Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG5DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG5DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG5Done\"}$percnt</span> | $percntMAKETEXT{\"$field_Status_s\"}$percnt | $n"
+format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_Title_s'=''\" then=\"$topic\" else=\"$field_Title_s\"}$percnt</a> | $topic | $field_No_s | $field_Customer_s |  $field_MachineType_s | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG1DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG1DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG1Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG2DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG2DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG2Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG3DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG3DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG3Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG4DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG4DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG4Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_QG5DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG5DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG5Done\"}$percnt</span> | $percntMAKETEXT{\"$field_Status_s\"}$percnt | $n"
 footer=""
 sort="field_Title_s asc"
 rows="99999"}%
@@ -52,8 +53,9 @@ rows="99999"}%
 %SOLRSEARCH{
 "field_Status_s:closed"
 web="%WEB%"
+fields=" web, topic, field_Title_s, field_No_s, field_Customer_s, field_MachineType_s, field_QG6DueDate_dt, field_QG7DueDate_dt, field_QG8DueDate_dt"
 header=""
-format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_Title_s'=~'^\$'\" then=\"$topic\" else=\"$field_Title_s\"}$percnt</a> | $topic</td><td>$percntIF{\"'$field_No_s'=~'^\$'\" then=\"\" else=\"$field_No_s\"}$percnt | $percntIF{\"'$field_Customer_s'=~'^\$'\" then=\"\" else=\"$field_Customer_s\"}$percnt | $percntIF{\"'$field_MachineType_s'=~'^\$'\" then=\"\" else=\"$field_MachineType_s\"}$percnt | <span style=\"display:none;\">$percntIF{\"'$field_QG6DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG6DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG6Done\"}$percnt</span> | <span style=\"display:none;\">$percntIF{\"'$field_QG7DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG7DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG7Done\"}$percnt</span> | <span style=\"display:none;\">$percntIF{\"'$field_QG8DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG8DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG8Done\"}$percnt</span> | $n"
+format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_Title_s'=~'^\$'\" then=\"$topic\" else=\"$field_Title_s\"}$percnt</a> | $topic | $field_No_s | $field_Customer_s | $field_MachineType_s | <span style=\"display:none;\">$percntIF{\"'$field_QG6DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG6DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG6Done\"}$percnt</span> | <span style=\"display:none;\">$percntIF{\"'$field_QG7DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG7DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG7Done\"}$percnt</span> | <span style=\"display:none;\">$percntIF{\"'$field_QG8DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_QG8DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/QG8Done\"}$percnt</span> | $n"
 footer=""
 sort="field_Title_s asc"
 rows="99999"
