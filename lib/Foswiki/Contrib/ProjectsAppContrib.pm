@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 our $VERSION = '1';
-our $RELEASE = "1";
+our $RELEASE = "2";
 
 our $SHORTDESCRIPTION = 'Modell Aachen Projects WikiApp';
 
