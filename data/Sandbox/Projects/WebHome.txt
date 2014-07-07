@@ -1,17 +1,4 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1399897924" format="1.1" reprev="2" version="3"}%
-<div class="widgetBlockTitle">%MAKETEXT{"Create new project"}%</div>
-<div class="widgetBlockContent">
-%INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
-<form action="%SCRIPTURLPATH{save}%/%WEB%/ProjectAUTOINC000" method="post" name="%WEB%">
-<input type="hidden" name="formtemplate" value="ProjectForm">
-<input type="hidden" name="templatetopic" value="ProjectTemplate">
-<input type="hidden" name="action_quietsave" value="1">
-%BUTTON{"%MAKETEXT{"Create new project"}%" type="submit"}%
-%CLEAR%
-</form>
-</div>
-
-<div class="widgetBlockContent">
 <div class="widgetBlockTitle">%MAKETEXT{"Current projects"}%</div>
 <div class="widgetBlockContent">
 <noautolink>
@@ -65,7 +52,6 @@ rows="99999"
 %AMPEL{"SignalQG7" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="QG7-%MAKETEXT{"Last payment"}%" DST="QG7-%MAKETEXT{"Last payment"}%" DONE="QG7-%MAKETEXT{"Last payment"}%" COND="done"}%
 %AMPEL{"SignalQG8" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="QG8-%MAKETEXT{"End of guarantee"}%" DST="QG8-%MAKETEXT{"End of guarantee"}%" DONE="QG8-%MAKETEXT{"End of guarantee"}%" COND="done"}%
 </div></div></div>
-</div>
 </div>
 
 %META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminUser"}%

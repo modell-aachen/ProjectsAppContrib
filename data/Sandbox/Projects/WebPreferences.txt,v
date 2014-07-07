@@ -1,4 +1,32 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1404725610" format="1.1" reprev="5" version="2"}%
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2014.07.07.09.33.30;	author BaseUserMapping_333;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2014.07.07.09.33.30;	author BaseUserMapping_999;	state Exp;
+branches;
+next	;
+
+
+desc
+@none
+@
+
+
+1.2
+log
+@save topic
+@
+text
+@%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1404725610" format="1.1" reprev="5" version="2"}%
 ---+!! <nop>%WEB% Web Preferences
 
 %TOC%
@@ -58,3 +86,17 @@ Users or groups allowed to change or rename this <nop>%TOPIC% topic: (e.g., [[%U
 ---
 
 %INCLUDE{"%SYSTEMWEB%.WebPreferencesHelp"}%
+@
+
+
+1.1
+log
+@autosave
+@
+text
+@d1 1
+a1 2
+%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1404725610" format="1.1" version="1"}%
+
+d30 2
+@

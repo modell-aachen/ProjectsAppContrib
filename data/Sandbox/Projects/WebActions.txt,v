@@ -1,0 +1,47 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2014.07.07.09.32.58;	author BaseUserMapping_333;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2014.07.07.09.32.58;	author BaseUserMapping_999;	state Exp;
+branches;
+next	;
+
+
+desc
+@none
+@
+
+
+1.2
+log
+@save topic
+@
+text
+@%META:TOPICINFO{author="BaseUserMapping_333" date="1404725578" format="1.1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+   * <a href="%SCRIPTURLPATH{"edit"}%/%BASEWEB%/ProjectAUTOINC000?template=%WEB%.ProjectEdit;templatetopic=%WEB%.ProjectTemplate;formtemplate=ProjectForm;t=%GMTIME{$epoch}%">%MAKETEXT{"Create new project"}%</a>
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%
+%META:PREFERENCE{name="NOWYSIWYG" title="NOWYSIWYG" type="Set" value="1"}%
+@
+
+
+1.1
+log
+@autosave
+@
+text
+@d1 1
+a1 2
+%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1404725578" format="1.1" version="1"}%
+
+d4 2
+@
