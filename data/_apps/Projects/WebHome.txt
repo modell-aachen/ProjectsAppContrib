@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1399897924" format="1.1" reprev="2" version="3"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1409217918" format="1.1" reprev="2" version="2"}%
 <div class="widgetBlockTitle">%MAKETEXT{"Current projects"}%</div>
 <div class="widgetBlockContent">
 <noautolink>
@@ -57,3 +57,4 @@ rows="99999"
 %META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminUser"}%
 %META:PREFERENCE{name="NOWYSIWYG" title="NOWYSIWYG" type="Set" value="1"}%
 %META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="SystemView"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Set" value="%25MAKETEXT%7b%22Projects%22%7d%25"}%

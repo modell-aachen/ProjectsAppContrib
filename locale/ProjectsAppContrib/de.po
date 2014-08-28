@@ -27,6 +27,9 @@ msgstr "Laufende Projekte"
 msgid "Project"
 msgstr "Projekt"
 
+msgid "Projects"
+msgstr "Projekte"
+
 #: WebHome, ProjectViewTemplate, ProjectEditTemplate
 msgid "Number"
 msgstr "KA-Nummer"
