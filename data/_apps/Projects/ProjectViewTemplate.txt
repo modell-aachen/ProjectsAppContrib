@@ -162,72 +162,72 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %TMPL:END%
 
 %TMPL:DEF{"searchactions"}%
-%ACTIONSEARCH{qg="%qg%" who="%who%" web="%WEB%" topic="%BASETOPIC%" state="%URLPARAM{"state" default="%state%"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }"}%
+%ACTIONSEARCH{qg="%qg%" web="%WEB%" topic="%BASETOPIC%" state="%URLPARAM{"state" default="%state%"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }" %additionalparameters%}%
 %TMPL:END%
 
 %{ Contents for the 'q1' tab. }%
 %TMPL:DEF{"tasks_q1"}%
 %TMPL:P{"printButton" section="tasks_q1"}%
 %TMPL:P{"task_filter" opentab="1"}%
-<div id="SignalQG1">%TMPL:P{"searchactions" qg="1" who="*" state="open"}%</div>
+<div id="SignalQG1">%TMPL:P{"searchactions" qg="1" additionalparameters="" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q2' tab. }%
 %TMPL:DEF{"tasks_q2"}%
 %TMPL:P{"printButton" section="tasks_q2"}%
 %TMPL:P{"task_filter" opentab="2"}%
-<div id="SignalQG2">%TMPL:P{"searchactions" qg="2" who="*" state="open"}%</div>
+<div id="SignalQG2">%TMPL:P{"searchactions" qg="2" additionalparameters="" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q3' tab. }%
 %TMPL:DEF{"tasks_q3"}%
 %TMPL:P{"printButton" section="tasks_q3"}%
 %TMPL:P{"task_filter" opentab="3"}%
-<div id="SignalQG3">%TMPL:P{"searchactions" qg="3" who="*" state="open"}%</div>
+<div id="SignalQG3">%TMPL:P{"searchactions" qg="3" additionalparameters="" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q4' tab. }%
 %TMPL:DEF{"tasks_q4"}%
 %TMPL:P{"printButton" section="tasks_q4"}%
 %TMPL:P{"task_filter" opentab="4"}%
-<div id="SignalQG4">%TMPL:P{"searchactions" qg="4" who="*" state="open"}%</div>
+<div id="SignalQG4">%TMPL:P{"searchactions" qg="4" additionalparameters="" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'q5' tab. }%
 %TMPL:DEF{"tasks_q5"}%
 %TMPL:P{"printButton" section="tasks_q5"}%
 %TMPL:P{"task_filter" opentab="5"}%
-<div id="SignalQG5">%TMPL:P{"searchactions" qg="5" who="*" state="open"}%</div>
+<div id="SignalQG5">%TMPL:P{"searchactions" qg="5" additionalparameters="" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'my tasks' tab. }%
 %TMPL:DEF{"tasks_mine"}%
 %TMPL:P{"printButton" section="tasks_mine"}%
-<div id="SignalMyTasks">%TMPL:P{"searchactions" qg="*" who="%WIKINAME%" state="*"}%</div>
+<div id="SignalMyTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="who=\"%WIKINAME%\"" state="*"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'open tasks' tab. }%
 %TMPL:DEF{"tasks_open"}%
 %TMPL:P{"printButton" section="tasks_open"}%
-<div id="SignalOpenTasks">%TMPL:P{"searchactions" qg="*" who="*" state="open"}%</div>
+<div id="SignalOpenTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="open"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'closed tasks' tab. }%
 %TMPL:DEF{"tasks_closed"}%
 %TMPL:P{"printButton" section="tasks_closed"}%
-<div id="SignalClosedTasks">%TMPL:P{"searchactions" qg="*" who="*" state="closed"}%</div>
+<div id="SignalClosedTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="closed"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'discarded tasks' tab. }%
 %TMPL:DEF{"tasks_discarded"}%
 %TMPL:P{"printButton" section="tasks_discarded"}%
-<div id="SignalDiscardedTasks">%TMPL:P{"searchactions" qg="*" who="*" state="discarded"}%</div>
+<div id="SignalDiscardedTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="discarded"}%</div>
 %TMPL:END%
 
 %{ Contents for the 'all tasks' tab. }%
 %TMPL:DEF{"tasks_all"}%
 %TMPL:P{"printButton" section="tasks_all"}%
-<div id="SignalAllTasks">%TMPL:P{"searchactions" qg="*" who="*" state="*"}%</div>
+<div id="SignalAllTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="*"}%</div>
 %TMPL:END%
 
 %TMPL:DEF{"printButton"}%%IF{"context MAPrinceModPluginEnabled"
