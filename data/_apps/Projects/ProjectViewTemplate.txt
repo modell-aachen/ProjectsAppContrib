@@ -53,7 +53,7 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %{ Unfortunately I need these definitions because TMPL:P parameters must not contain quotes. }%
 %TMPL:DEF{"q1_label"}%QG1: %MAKETEXT{"Construction"}%%TMPL:END%
 %TMPL:DEF{"q2_label"}%QG2: %MAKETEXT{"Allocation"}%%TMPL:END%
-%TMPL:DEF{"q3_label"}%QG3: %MAKETEXT{"Assembling"}%%MAKETEXT{"My tasks"}%%TMPL:END%
+%TMPL:DEF{"q3_label"}%QG3: %MAKETEXT{"Assembling"}%%TMPL:END%
 %TMPL:DEF{"q4_label"}%QG4: %MAKETEXT{"Initiation"}%%TMPL:END%
 %TMPL:DEF{"q5_label"}%QG5: %MAKETEXT{"Delivery date"}%%TMPL:END%
 %TMPL:DEF{"mine_label"}%%MAKETEXT{"My tasks"}%%TMPL:END%
