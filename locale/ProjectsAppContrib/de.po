@@ -181,7 +181,7 @@ msgstr "Meine Aufgaben"
 
 #: ProjectViewTemplate
 msgid "Open tasks"
-msgstr "offene Aufgaben"
+msgstr "Offene Aufgaben"
 
 #: ProjectViewTemplate
 msgid "Closed tasks"
