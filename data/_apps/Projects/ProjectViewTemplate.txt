@@ -1,42 +1,13 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392307710" format="1.1" reprev="2" version="2"}%
 %META:TOPICPARENT{name="WebHome"}%
-%ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
-jQuery(function($) {
-  $('.foswikiEditFormDateField').livequery(function() {$(this).attr('readonly', 'readonly');});
-});
-</script>"}%
-
-%ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/project.js\"></script>
-<style>@import url('%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/printbutton.css');</style>"}%
-
-%ADDTOZONE{"head" text="<style type='text/css' media='print'>
-.noprint { display:none }
-</style>"}%
-
-%JQREQUIRE{"ui::dialog, ui::button, textboxlist, blockui"}%
 %TMPL:INCLUDE{view}%
 
-%{
- This will generate a tab for a JQuery TABPANE.
- If there are multiple ways available to generate this tab, here would be the appropriate place to decide which one to use.
- By default it will create a tab that fetches its contents via ajax but not if this the print cover is being used.
-
- Parameters:
-   * section: Template definition to appear in the tab (like TMPL:P{%section%}).
-   * label: Label for the tab.
-   * id: Id-parameter for the tab.
-   * noprint: If this section should be printed by default, you can issue it to be printed with the url-parameter printTab=%section%.
-}%
 %TMPL:DEF{"modacTab"}%%IF{"$'URLPARAM{cover}' = 'print' and ('%noprint%' != '1' and $'URLPARAM{printTab}'='' or $'URLPARAM{printTab}'='%section%')"
 then="$percntTMPL:P{\"modacNoAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%section%\"}$percent"
 else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%section%\"}$percent"
 }% %TMPL:END%
 
-%{
- This will generate a tab without the need to fetch contents per ajax. This tab can be printed.
 
- Parameters: section, label and id like modacTab
-}%
 %TMPL:DEF{"modacNoAjaxTab"}%%TAB{"%label%" id="%id%"}%
 %TMPL:P{"%section%"}%
 %ENDTAB%%TMPL:END%
@@ -63,7 +34,7 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %TMPL:DEF{"all_label"}%%MAKETEXT{"All tasks"}%%TMPL:END%
 
 %TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
-
+%ADDTOZONE{"script" requieres="JQUERYPLUGIN::FOSWIKI" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/change_form_for_tasks.js'></script>"}%
 %INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
 
 <div class="widgetBlockTitle">%MAKETEXT{"Project outline data"}%</div>
@@ -107,50 +78,44 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 </table>
 </div>
 
-<div class="widgetBlockTitle">%MAKETEXT{"Tasks"}%</div>
-<div class="widgetBlockContent">
-<div class="noprint">
-%BUTTON{"%MAKETEXT{"Add task"}%" href="#actiondialog" class="jqUIDialogLink"}%
-%STARTSECTION{"actiondialog"}%
-<div id="actiondialog" title="%MAKETEXT{"Add task"}%" class="jqUIDialog {draggable:true, resizable: true, height:400, width:600}">
-%COMMENT{type="action3"  location="This should be unique text AIVOqxWgyT"}%
-<div style="display:none;">This should be unique text AIVOqxWgyT%ACTIONSEARCH{web="%WEB%" topic="DummyTopic"}%</div>
-</div>
-</div>
 %ENDSECTION{"actiondialog"}%
 
-<div class="widgetBlockTitle">%MAKETEXT{"Tasks assigned to their Quality-Gates"}%</div>
-<div class="widgetBlockContent">
-%TABPANE{select="%URLPARAM{"tab"}%" class="simple"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{q1_label}$percent" id="tasks_q1" section="tasks_q1"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{q2_label}$percent" id="tasks_q2" section="tasks_q2"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{q3_label}$percent" id="tasks_q3" section="tasks_q3"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{q4_label}$percent" id="tasks_q4" section="tasks_q4"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{q5_label}$percent" id="tasks_q5" section="tasks_q5"}%
-%AMPEL{"SignalQG1" %AMPEL_OPT%}%
-%AMPEL{"SignalQG2" %AMPEL_OPT%}%
-%AMPEL{"SignalQG3" %AMPEL_OPT%}%
-%AMPEL{"SignalQG4" %AMPEL_OPT%}%
-%AMPEL{"SignalQG5" %AMPEL_OPT%}%
+<div>
+%TABPANE{class="simple" select="%URLPARAM{"table"}%"}%
+%TAB{"%MAKETEXT{"Construction"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Construction"}%
+%ENDTAB%
+%TAB{"%MAKETEXT{"Allocation"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Allocation"}%
+%ENDTAB%
+%TAB{"%MAKETEXT{"Assembling"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Assembling"}%
+%ENDTAB%
+%TAB{"%MAKETEXT{"Initiation"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Initiation"}%
+%ENDTAB%
+%TAB{"%MAKETEXT{"Delivery date"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Delivery date"}%
+%ENDTAB%
+%TAB{"%MAKETEXT{"Acceptance"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Acceptance"}%
+%ENDTAB%
+%TAB{"%MAKETEXT{"Last payment"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Last payment"}%
+%ENDTAB%
+%TAB{"%MAKETEXT{"End of guarantee"}%"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="End of guarantee"}%
+%ENDTAB%
 %ENDTABPANE%
 </div>
-
-<div class="widgetBlockTitle">%MAKETEXT{"Tasks assigned to their status"}% </div>
-<div class="widgetBlockContent">
-%TABPANE{class="simple"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{mine_label}$percent" id="tasks_mine" section="tasks_mine"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{open_label}$percent" id="tasks_open" section="tasks_open"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{closed_label}$percent" id="tasks_closed" section="tasks_closed"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{discarded_label}$percent" id="tasks_discarded" section="tasks_discarded"}%
-%TMPL:P{"modacTab" label="$percentTMPL:P{all_label}$percent" id="tasks_all" section="tasks_all"}%
-%AMPEL{"SignalMyTasks" %AMPEL_OPT%}%
-%AMPEL{"SignalOpenTasks" %AMPEL_OPT%}%
-%AMPEL{"SignalClosedTasks" %AMPEL_OPT%}%
-%AMPEL{"SignalDiscardedTasks" %AMPEL_OPT%}%
-%AMPEL{"SignalAllTasks" %AMPEL_OPT%}%
-%ENDTABPANE%
-</noautolink>
-</div>
+<div style="display:none;">
+%STARTSECTION{"tasksgrid"}%
+%TASKSGRID{
+"%state%"
+form="Projects.WorkPackageForm"
+templatefile="Projects.TasksAPITemplate"
+depth="1"}%
+%ENDSECTION{"tasksgrid"}%
 </div>
 %TMPL:END%
 
@@ -162,76 +127,8 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %TMPL:END%
 
 %TMPL:DEF{"searchactions"}%
-%ACTIONSEARCH{qg="%qg%" web="%WEB%" topic="%BASETOPIC%" state="%URLPARAM{"state" default="%state%"}%" sort="$createdate,$who,$due" jqsortable="1" jqsortopts="widgets: ['zebra'], sortList: [[0,1],[0,1]], headers: { 0: { sorter: 'qwikiDate' }, 5: { sorter: 'qwikiDate' }, 6: { sorter: 'qwikiDate' }, 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false } }" %additionalparameters%}%
 %TMPL:END%
 
-%{ Contents for the 'q1' tab. }%
-%TMPL:DEF{"tasks_q1"}%
-%TMPL:P{"printButton" section="tasks_q1"}%
-%TMPL:P{"task_filter" opentab="1"}%
-<div id="SignalQG1">%TMPL:P{"searchactions" qg="1" additionalparameters="" state="open"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'q2' tab. }%
-%TMPL:DEF{"tasks_q2"}%
-%TMPL:P{"printButton" section="tasks_q2"}%
-%TMPL:P{"task_filter" opentab="2"}%
-<div id="SignalQG2">%TMPL:P{"searchactions" qg="2" additionalparameters="" state="open"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'q3' tab. }%
-%TMPL:DEF{"tasks_q3"}%
-%TMPL:P{"printButton" section="tasks_q3"}%
-%TMPL:P{"task_filter" opentab="3"}%
-<div id="SignalQG3">%TMPL:P{"searchactions" qg="3" additionalparameters="" state="open"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'q4' tab. }%
-%TMPL:DEF{"tasks_q4"}%
-%TMPL:P{"printButton" section="tasks_q4"}%
-%TMPL:P{"task_filter" opentab="4"}%
-<div id="SignalQG4">%TMPL:P{"searchactions" qg="4" additionalparameters="" state="open"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'q5' tab. }%
-%TMPL:DEF{"tasks_q5"}%
-%TMPL:P{"printButton" section="tasks_q5"}%
-%TMPL:P{"task_filter" opentab="5"}%
-<div id="SignalQG5">%TMPL:P{"searchactions" qg="5" additionalparameters="" state="open"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'my tasks' tab. }%
-%TMPL:DEF{"tasks_mine"}%
-%TMPL:P{"printButton" section="tasks_mine"}%
-<div id="SignalMyTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="who=\"%WIKINAME%\"" state="*"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'open tasks' tab. }%
-%TMPL:DEF{"tasks_open"}%
-%TMPL:P{"printButton" section="tasks_open"}%
-<div id="SignalOpenTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="open"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'closed tasks' tab. }%
-%TMPL:DEF{"tasks_closed"}%
-%TMPL:P{"printButton" section="tasks_closed"}%
-<div id="SignalClosedTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="closed"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'discarded tasks' tab. }%
-%TMPL:DEF{"tasks_discarded"}%
-%TMPL:P{"printButton" section="tasks_discarded"}%
-<div id="SignalDiscardedTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="discarded"}%</div>
-%TMPL:END%
-
-%{ Contents for the 'all tasks' tab. }%
-%TMPL:DEF{"tasks_all"}%
-%TMPL:P{"printButton" section="tasks_all"}%
-<div id="SignalAllTasks">%TMPL:P{"searchactions" qg="*" additionalparameters="" state="*"}%</div>
-%TMPL:END%
-
-%TMPL:DEF{"printButton"}%%IF{"context MAPrinceModPluginEnabled"
-then="<div class='atpExportFrame'><a href=\"%SCRIPTURL{"view"}%/%SYSTEMWEB%/MAPrinceModPrintDialog?skin=text&section=dialog&pweb=%ENCODE{"%INCLUDINGWEB%" type="url"}%&ptopic=%ENCODE{"%INCLUDINGTOPIC%" type="url"}%&landscape=%LANDSCAPE{default="0"}%&printParams=printTab,DaysClosed&printTab=%section%&DaysClosed=%URLPARAM{"DaysClosed"}%\" class=\"jqUIDialogLink {cache:false} modacPrintHide atpExportButton\" title='%MAKETEXT{"Export these tasks to PDF"}%'>$percentICON{pdf}$percent</a></div>" else="<!-- no print -->"}%%TMPL:END%
 
 %META:TOPICMOVED{by="BaseUserMapping_333" date="1372866977" from="VorlageWiki/Projects.ProjectView" to="VorlageWiki/Projects.ProjectViewTemplate"}%
 %META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminUser"}%

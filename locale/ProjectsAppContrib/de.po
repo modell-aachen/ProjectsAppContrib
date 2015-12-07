@@ -219,6 +219,9 @@ msgstr "Ersteller"
 msgid "Closed on"
 msgstr "Erledigt am"
 
+#: WorkPackageForm
+msgid "Taskpackage"
+msgstr "Aufgabenpaket"
 
 
 
