@@ -28,3 +28,4 @@ locale/ProjectsAppContrib/de.po 0644
 lib/Foswiki/Contrib/ProjectsAppContrib.pm 0644
 pub/System/ProjectsAppContrib/project.js 0644
 pub/System/ProjectsAppContrib/printbutton.css 0644
+pub/System/ProjectsAppContrib/change_form_for_task.js 0644
