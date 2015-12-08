@@ -22,3 +22,4 @@
    * Set TASKCFG_HAS_CHILDREN = 0
    * Set TASKCFG_TASK_TYPE = project
    * Set TASKCFG_TASK_TEMPLATE_FILE = $formweb.TasksAPITemplate
+   * Set TASKCFG_TASK_TEMPLATE = tasksapi::tasknochild

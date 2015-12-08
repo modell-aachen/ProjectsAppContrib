@@ -1,6 +1,8 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1409217918" format="1.1" reprev="2" version="2"}%
-<div class="widgetBlockTitle">%MAKETEXT{"Current projects"}%</div>
+<div class="widgetBlockTitle">%MAKETEXT{"Projects"}%</div>
 <div class="widgetBlockContent">
+%TABPANE{class="simple"}%
+%TAB{"%MAKETEXT{"Open projects"}%"}%
 <noautolink>
 <style type="text/css">
 div#AmpelQG1 table td { text-align: center; }
@@ -28,10 +30,12 @@ rows="99999"}%
 %AMPEL{"SignalQG4" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="QG4-%MAKETEXT{"Initiation"}%" DST="QG4-%MAKETEXT{"Initiation"}%" DONE="QG4-%MAKETEXT{"Initiation"}%" COND="done"}%
 %AMPEL{"SignalQG5" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="QG5-%MAKETEXT{"Delivery date"}%" DST="QG5-%MAKETEXT{"Delivery date"}%" DONE="QG5-%MAKETEXT{"Delivery date"}%" COND="done"}%
 </div> </div> </div> </div> </div>
-</div>
-
-<div class="widgetBlockTitle">%MAKETEXT{"Closed projects"}%</div>
-<div class="widgetBlockContent">
+%ENDTAB%
+%TAB{"%MAKETEXT{"Closed projects"}%"}%
+<style type="text/css">
+div#AmpelQG1 table td { text-align: center; }
+</style>
+</noautolink>
 <div id=SignalQG6>
 <div id=SignalQG7>
 <div id=SignalQG8>
@@ -52,6 +56,8 @@ rows="99999"
 %AMPEL{"SignalQG7" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="QG7-%MAKETEXT{"Last payment"}%" DST="QG7-%MAKETEXT{"Last payment"}%" DONE="QG7-%MAKETEXT{"Last payment"}%" COND="done"}%
 %AMPEL{"SignalQG8" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="QG8-%MAKETEXT{"End of guarantee"}%" DST="QG8-%MAKETEXT{"End of guarantee"}%" DONE="QG8-%MAKETEXT{"End of guarantee"}%" COND="done"}%
 </div></div></div>
+%ENDTAB%
+</div>
 </div>
 
 %META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminUser"}%
