@@ -83,28 +83,28 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 <div>
 %TABPANE{class="simple" select="%URLPARAM{"table"}%"}%
 %TAB{"%MAKETEXT{"Construction"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Construction"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%Construction"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Allocation"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Allocation"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%Allocation"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Assembling"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Assembling"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%Assembling"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Initiation"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Initiation"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%Initiation"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Delivery date"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Delivery date"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%Delivery date"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Acceptance"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Acceptance"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%Acceptance"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Last payment"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="Last payment"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%Last payment"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"End of guarantee"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="End of guarantee"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%End of guarantee"}%
 %ENDTAB%
 %ENDTABPANE%
 </div>
