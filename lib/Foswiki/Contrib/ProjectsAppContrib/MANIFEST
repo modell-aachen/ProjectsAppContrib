@@ -22,7 +22,6 @@ data/_apps/Projects/WebSearch.txt 0644
 data/_apps/Projects/WebStatistics.txt 0644
 data/_apps/Projects/WebTopicList.txt 0644
 data/_apps/Projects/WorkPackageForm.txt 0644
-data/System/change_form_for_tasks.js 0644
 data/System/ProjectsAppContrib.txt 0644
 locale/ProjectsAppContrib/de.po 0644
 lib/Foswiki/Contrib/ProjectsAppContrib.pm 0644
