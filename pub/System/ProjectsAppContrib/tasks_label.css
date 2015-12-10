@@ -1,0 +1,8 @@
+td > span.label.labelMilestone{
+ background-color: #3288BD;
+ width: 75px;
+}
+td > span.label.labelTaskpackage{
+ background-color: #F46D43;
+ width: 75px;
+}

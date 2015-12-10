@@ -1,32 +1,22 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="save topic" date="1392307070" format="1.1" reprev="2" version="2"}%
 %META:TOPICPARENT{name="WebHome"}%
 | *Name* | *Type* | *Size* | *Values* | *Tooltip message* | *Attributes* |
-| Title | text | 10 | | Title | M |
-| No | text | 10 | | Number | |
-| OrderNo | text | 10 | | order number | |
-| BookingNo | text | 10 | | booking number | |
-| Customer | text | | | Customer |  |
-| MachineType | text | | | Machine type | |
-| ContactPersonSales | text | | | Contact Person Sales | |
-| OrderVolume | text | | | volume of orders | |
-| Penalty | text | | | penalty | |
+| ProjectName | text | 20 | | Project Name | M |
+| ProjectNumber | text | 20 | | Project Number | |
+| Customer | text | 20 | | Customer |  |
+| ProjectLeader | user | 30 | | Project Leader | |
+| ProjectMembers | user+multi | 30 | | Project Mebers | |
 | Status | select+values | 1 |  %MAKETEXT{"according to plan"}%=according to plan, %MAKETEXT{"to be discussed"}%=to be discussed, %MAKETEXT{"closed"}%=closed | | |
-| QG1DueDate | date | 10  |  | QG1 - due date | |
-| QG1Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
-| QG2DueDate | date | 10 |  | QG2-DueDate | |
-| QG2Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
-| QG3DueDate | date | 10 |  | QG3-DueDate | |
-| QG3Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
-| QG4DueDate | date | 10 |  | QG4-DueDate | |
-| QG4Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
-| QG5DueDate | date | 10 |  | QG5-DueDate | |
-| QG5Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
-| QG6DueDate | date | 10 |  | QG6-DueDate | |
-| QG6Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
-| QG7DueDate | date | 10 |  | QG7-DueDate | |
-| QG7Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
-| QG8DueDate | date | 10 |  | QG8-DueDate | |
-| QG8Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
+| M0DueDate | date | 10  |  | 0 - due date | |
+| M0Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
+| M1DueDate | date | 10  |  | M1 - due date | |
+| M1Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
+| M2DueDate | date | 10 |  | M2-DueDate | |
+| M2Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
+| M3DueDate | date | 10 |  | M3-DueDate | |
+| M3Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
+| M4DueDate | date | 10 |  | M4-DueDate | |
+| M4Done | checkbox+values | 1 | %MAKETEXT{"done"}%=done |  |  |
 
    * Set ALLOWTOPICCHANGE = AdminUser
    * Set NOWYSIWYG = 1

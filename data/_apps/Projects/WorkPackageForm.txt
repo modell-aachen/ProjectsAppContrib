@@ -17,6 +17,7 @@
 | Prioritize | select+values | | %MAKETEXT{"no"}%=No,%MAKETEXT{"yes"}%=Yes | High priority | |
 | HasChildren | select+values | | %MAKETEXT{"no"}%=No,%MAKETEXT{"yes"}%=Yes | Divided into sub-tasks | |
 | Type | select+values | | %MAKETEXT{"Taskpackage"}%=Taskpackage,%MAKETEXT{"Milestone"}%=Milestone | Type | |
+| TaskNumber | text | | | Task number | |
 
    * Set NOWYSIWYG = 1
    * Set TASKCFG_HAS_CHILDREN = 1

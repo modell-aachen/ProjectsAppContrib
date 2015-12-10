@@ -223,14 +223,22 @@ msgstr "Erledigt am"
 msgid "Taskpackage"
 msgstr "Aufgabenpaket"
 
+msgid "Pre-Project phase"
+msgstr "Vorprojektphase"
 
+msgid "Feasibility and planning"
+msgstr "Machbarkeit und Planung"
 
+msgid "Realisation product design"
+msgstr "Realisicrung Produktentwicklung"
 
+msgid "Planning process design"
+msgstr "Plannung Prozressentwicklung"
 
+msgid "Realisation process design"
+msgstr "Realisierung Prozessentwicklung"
 
-
-
-
-
+msgid "Task number"
+msgstr "Aufgabennummer"
 
 

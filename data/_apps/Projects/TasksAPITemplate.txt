@@ -110,6 +110,21 @@
         </div>
       </div>
       <div class="task-meta-entry">
+        <i class="fa fa-tag"></i>
+        <div>
+          <span class="title">%MAKETEXT{"Task number"}%</span>
+          <span>
+%RENDERFOREDIT{
+  form="%taskeditor_form%"
+  fields="TaskNumber"
+  format="$edit"
+  header=""
+  footer=""
+}%
+          </span>
+        </div>
+      </div>
+      <div class="task-meta-entry">
         <i class="fa fa-lightbulb-o"></i>
         <div>
           <span class="title">%MAKETEXT{"Reminder"}%</span>
@@ -235,6 +250,21 @@
 %RENDERFOREDIT{
   form="%taskeditor_form%"
   fields="Informees"
+  format="$edit"
+  header=""
+  footer=""
+}%
+          </span>
+        </div>
+      </div>
+      <div class="task-meta-entry">
+        <i class="fa fa-tag"></i>
+        <div>
+          <span class="title">%MAKETEXT{"Task number"}%</span>
+          <span>
+%RENDERFOREDIT{
+  form="%taskeditor_form%"
+  fields="TaskNumber"
   format="$edit"
   header=""
   footer=""
@@ -385,6 +415,7 @@
         </div>
       </div>%{
       }%%IF{"'%TASKINFO{field="Informees"}%'=''" else="<div class=\"task-meta-entry\"><i class=\"fa fa-users\"></i><div><span class=\"title\">$percntMAKETEXT{$quotInformees$quot}$percnt</span><span>%TASKINFO{field="Informees" user="1"}%</span></div></div>"}%%{
+      }%%IF{"'%TASKINFO{field="TaskNumber"}%'=''" else="<div class=\"task-meta-entry\"><i class=\"fa fa-tag\"></i><div><span class=\"title\">$percntMAKETEXT{$quotTask number$quot}$percnt</span><span>%TASKINFO{field="TaskNumber" user="1"}%</span></div></div>"}%%{
       }%<div class="task-meta-entry">
         <i class="fa fa-calendar"></i>
         <div>
@@ -447,12 +478,16 @@
 %{a single task entry within the grid}%
 %TMPL:DEF{"tasksapi::task"}%%{
 }%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize"}%">
-%IF{"context task_showexpander and '%TASKINFO{taskcfg="HAS_CHILDREN"}%'='1'" then="<td class=\"expander no-print\"><span class=\"open\">$percntICON{\"toggleopen\"}$percnt</span><span class=\"close\">$percntICON{\"toggleclose\"}$percnt</span></td>"}%%{
+%IF{"context task_showexpander and '%TASKINFO{taskcfg="HAS_CHILDREN"}%'='1'"
+then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
+   then=\"<td class\\"no-print\\"></td>\"
+   else=\"<td class=\\"expander no-print\\"><span class=\\"open\\">$percntICON{\"toggleopen\"}$percnt</span><span class=\\"close\\">$percntICON{\"toggleclose\"}$percnt</span></td>\"
+}$percnt"}%%{
 }%<td class="created" data-value="%TASKINFO{field="Created"}%">
     <span>%TASKINFO{field="Created" format="$day $month $year"}%</span>
     <span>%TASKINFO{field="Author" user="1"}%</span>
   </td>
-  <td class="type">%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-primary\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-default\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Task'" then="<span class=\"label label-info\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%</td>
+  <td class="type">%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-default labelTaskpackage\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-primary labelMilestone\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Task'" then="<span class=\"label label-info\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%</td>
   <td class="assigned">
     <span>%TASKINFO{field="AssignedTo" user="1"}%</span>
   </td>
