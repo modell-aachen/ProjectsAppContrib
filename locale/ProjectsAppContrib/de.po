@@ -241,4 +241,12 @@ msgstr "Realisierung Prozessentwicklung"
 msgid "Task number"
 msgstr "Aufgabennummer"
 
+msgid "Project name"
+msgstr "Projektname"
+
+msgid "Project number"
+msgstr "Projektnummer"
+
+msgid "Project members"
+msgstr "Projektmitglieder"
 
