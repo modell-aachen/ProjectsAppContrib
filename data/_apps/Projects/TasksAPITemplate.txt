@@ -497,6 +497,9 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
       <span class="attachments no-print %IF{"'%TASKINFO{meta="AttachCount"}%'='0'" then="hidden"}%">%TASKINFO{meta="AttachCount"}%</span>
     </div>
   </td>
+  <td class="number">
+      <span class="title">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
+  </td>
   <td class="due" data-value="%TASKINFO{field="DueDate"}%">
     <span>%TASKINFO{field="DueDate" format="$day $month $year"}%</span>
   </td>
@@ -528,6 +531,9 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
       <span class="title">%TASKINFO{field="Title" shorten="160"}%</span>
       <span class="attachments no-print %IF{"'%TASKINFO{meta="AttachCount"}%'='0'" then="hidden"}%">%TASKINFO{meta="AttachCount"}%</span>
     </div>
+  </td>
+  <td class="number">
+      <span class="title">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
   </td>
   <td class="due" data-value="%TASKINFO{field="DueDate"}%">
     <span>%TASKINFO{field="DueDate" format="$day $month $year"}%</span>
@@ -634,6 +640,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
   <th>%MAKETEXT{"Type"}%</th>
   <th data-sort="AssignedTo">%MAKETEXT{"Assigned to"}%</th>
   <th data-sort="Title">%MAKETEXT{"Title"}%</th>
+  <th data-sort="TaskNumber">%MAKETEXT{"Task number"}%</th>
   <th data-sort="DueDate">%MAKETEXT{"Due date"}%</th>
   <th data-sort="Status">%MAKETEXT{"Status"}%</th>%{
   }%%IF{"not context task_readonly" then="<td class=\"no-print\"></td>"}%%{

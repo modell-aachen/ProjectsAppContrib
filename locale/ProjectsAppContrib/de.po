@@ -230,10 +230,10 @@ msgid "Feasibility and planning"
 msgstr "Machbarkeit und Planung"
 
 msgid "Realisation product design"
-msgstr "Realisicrung Produktentwicklung"
+msgstr "Realisirung Produktentwicklung"
 
 msgid "Planning process design"
-msgstr "Plannung Prozressentwicklung"
+msgstr "Planung Prozessentwicklung"
 
 msgid "Realisation process design"
 msgstr "Realisierung Prozessentwicklung"
