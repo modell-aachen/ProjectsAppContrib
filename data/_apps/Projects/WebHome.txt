@@ -8,54 +8,58 @@
 div#AmpelQG1 table td { text-align: center; }
 </style>
 </noautolink>
+<div id="SignalM0">
 <div id="SignalM1">
 <div id="SignalM2">
 <div id="SignalM3">
 <div id="SignalM4">
 %TABLE{%TABLETHEMEPARAM%}%
-| *%MAKETEXT{"Title"}%* | *%MAKETEXT{"Number"}%* | *%MAKETEXT{"Customer"}%* | *M1-%MAKETEXT{"Feasibility and planning"}%* | *M2-%MAKETEXT{"Realisation product design"}%* | *M3-%MAKETEXT{"Planning process design"}%* | *M4-%MAKETEXT{"Realisation process design"}%* | *%MAKETEXT{"Status"}%* |
+| *%MAKETEXT{"Project name"}%* | *%MAKETEXT{"Project number"}%* | *%MAKETEXT{"Customer"}%* | *0-%MAKETEXT{"Pre-Project phase"}%* | *M1-%MAKETEXT{"Feasibility and planning"}%* | *M2-%MAKETEXT{"Realisation product design"}%* | *M3-%MAKETEXT{"Planning process design"}%* | *M4-%MAKETEXT{"Realisation process design"}%* | *%MAKETEXT{"Status"}%* |
 %SOLRSEARCH{ "field_Status_s:(according?to?plan OR to?be?discussed)"
 web="%WEB%"
-fields=" web, topic, field_ProjectName_s, field_ProjectNumber_s, field_Customer_s, field_M1DueDate_dt, field_M2DueDate_dt, field_M3DueDate_dt, field_M4DueDate_dt, field_Status_s"
+fields=" web, topic, field_ProjectName_s, field_ProjectNumber_s, field_Customer_s, field_M0DueDate_dt, field_M1DueDate_dt, field_M2DueDate_dt, field_M3DueDate_dt, field_M4DueDate_dt, field_Status_s"
 header=""
-format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_ProjectName_s'=''\" then=\"$topic\" else=\"$field_ProjectName_s\"}$percnt</a> | $field_ProjectNumber_s | $field_Customer_s | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M1DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M1DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M1Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M2DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M2DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M2Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M3DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M3DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M3Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M4DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M4DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M4Done\"}$percnt</span> | $percntMAKETEXT{\"$field_Status_s\"}$percnt | $n"
+format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_ProjectName_s'=''\" then=\"$topic\" else=\"$field_ProjectName_s\"}$percnt</a> | $field_ProjectNumber_s | $field_Customer_s | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M0DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M0DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M0Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M1DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M1DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M1Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M2DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M2DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M2Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M3DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M3DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M3Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M4DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M4DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M4Done\"}$percnt</span> | $percntMAKETEXT{\"$field_Status_s\"}$percnt | $n"
 footer=""
 sort="field_Title_s asc"
 rows="99999"}%
 </table>
+%AMPEL{"SignalM0" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="0-%MAKETEXT{"Pre-Project phase"}%" DST="0-%MAKETEXT{"Pre-Project phase"}%" DONE="0-%MAKETEXT{"Pre-Project phase"}%" COND="done"}%
 %AMPEL{"SignalM1" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M1-%MAKETEXT{"Feasibility and planning"}%" DST="M1-%MAKETEXT{"Feasibility and planning"}%" DONE="M1-%MAKETEXT{"Feasibility and planning"}%" COND="done"}%
 %AMPEL{"SignalM2" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M2-%MAKETEXT{"Realisation product design"}%" DST="M2-%MAKETEXT{"Realisation product design"}%" DONE="M2-%MAKETEXT{"Realisation product design"}%" COND="done"}%
 %AMPEL{"SignalM3" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M3-%MAKETEXT{"Planning process design"}%" DST="M3-%MAKETEXT{"Planning process design"}%" DONE="M3-%MAKETEXT{"Planning process design"}%" COND="done"}%
 %AMPEL{"SignalM4" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M4-%MAKETEXT{"Realisation process design"}%" DST="M4-%MAKETEXT{"Realisation process design"}%" DONE="M4-%MAKETEXT{"Realisation process design"}%" COND="done"}%
-</div> </div> </div> </div>
+</div> </div> </div> </div> </div>
 %ENDTAB%
 %TAB{"%MAKETEXT{"Closed projects"}%"}%
 <style type="text/css">
 div#AmpelQG1 table td { text-align: center; }
 </style>
 </noautolink>
+<div id="SignalM0">
 <div id="SignalM1">
 <div id="SignalM2">
 <div id="SignalM3">
 <div id="SignalM4">
 %TABLE{%TABLETHEMEPARAM%}%
-| *%MAKETEXT{"Title"}%* | *%MAKETEXT{"Number"}%* | *%MAKETEXT{"Customer"}%* | *M1-%MAKETEXT{"Feasibility and planning"}%* | *M2-%MAKETEXT{"Realisation product design"}%* | *M3-%MAKETEXT{"Planning process design"}%* | *M4-%MAKETEXT{"Realisation process design"}%* | *%MAKETEXT{"Status"}%* |
+| *%MAKETEXT{"Project name"}%* | *%MAKETEXT{"Project number"}%* | *%MAKETEXT{"Customer"}%* | *0-%MAKETEXT{"Pre-Project phase"}%* | *M1-%MAKETEXT{"Feasibility and planning"}%* | *M2-%MAKETEXT{"Realisation product design"}%* | *M3-%MAKETEXT{"Planning process design"}%* | *M4-%MAKETEXT{"Realisation process design"}%* | *%MAKETEXT{"Status"}%* |
 %SOLRSEARCH{
 "field_Status_s:closed"
 web="%WEB%"
-fields=" web, topic, field_ProjectName_s, field_ProjectNumber_s, field_Customer_s, field_M1DueDate_dt, field_M2DueDate_dt, field_M3DueDate_dt, field_M4DueDate_dt, field_Status_s"
+fields=" web, topic, field_ProjectName_s, field_ProjectNumber_s, field_Customer_s, field_M0DueDate_dt, field_M1DueDate_dt, field_M2DueDate_dt, field_M3DueDate_dt, field_M4DueDate_dt, field_Status_s"
 header=""
-format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_ProjectName_s'=''\" then=\"$topic\" else=\"$field_ProjectName_s\"}$percnt</a> | $field_ProjectNumber_s | $field_Customer_s | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M1DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M1DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M1Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M2DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M2DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M2Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M3DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M3DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M3Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M4DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M4DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M4Done\"}$percnt</span> | $percntMAKETEXT{\"$field_Status_s\"}$percnt | $n"
+format="| <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$topic\">$percntIF{\"'$field_ProjectName_s'=''\" then=\"$topic\" else=\"$field_ProjectName_s\"}$percnt</a> | $field_ProjectNumber_s | $field_Customer_s | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M0DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M0DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M0Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M1DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M1DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M1Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M2DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M2DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M2Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M3DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M3DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M3Done\"}$percnt</span> | <span style=\"display:none;\" class='TMLhtml' >$percntIF{\"'$field_M4DueDate_dt'=~'01 Jan 1970'\" then=\"\" else=\"$field_M4DueDate_dt\"}$percnt $percntQUERY{\"'$topic'/M4Done\"}$percnt</span> | $percntMAKETEXT{\"$field_Status_s\"}$percnt | $n"
 footer=""
 sort="field_Title_s asc"
 rows="99999"
 }%
 </table>
+%AMPEL{"SignalM0" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="0-%MAKETEXT{"Pre-Project phase"}%" DST="0-%MAKETEXT{"Pre-Project phase"}%" DONE="0-%MAKETEXT{"Pre-Project phase"}%" COND="done"}%
 %AMPEL{"SignalM1" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M1-%MAKETEXT{"Feasibility and planning"}%" DST="M1-%MAKETEXT{"Feasibility and planning"}%" DONE="M1-%MAKETEXT{"Feasibility and planning"}%" COND="done"}%
 %AMPEL{"SignalM2" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M2-%MAKETEXT{"Realisation product design"}%" DST="M2-%MAKETEXT{"Realisation product design"}%" DONE="M2-%MAKETEXT{"Realisation product design"}%" COND="done"}%
 %AMPEL{"SignalM3" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M3-%MAKETEXT{"Planning process design"}%" DST="M3-%MAKETEXT{"Planning process design"}%" DONE="M3-%MAKETEXT{"Planning process design"}%" COND="done"}%
 %AMPEL{"SignalM4" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M4-%MAKETEXT{"Realisation process design"}%" DST="M4-%MAKETEXT{"Realisation process design"}%" DONE="M4-%MAKETEXT{"Realisation process design"}%" COND="done"}%
-</div></div></div></div>
+</div> </div></div></div></div>
 %ENDTAB%
 </div>
 </div>

@@ -35,14 +35,14 @@ jQuery(function($) {
 <div style="clear:left"></div>
 </div>
 
-<div class="widgetBlockTitle">Q-Gates / %MAKETEXT{"basic dates"}%</div>
+<div class="widgetBlockTitle">Phasen</div>
 <div class="widgetBlockContent">
 <table class="metaDataHead">
 <tr><td width="200px">0: %MAKETEXT{"Pre-Project phase"}%</td><td width="200px">%RENDERFOREDIT{field="M0DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="M0Done" format="$edit"}% </td></tr>
 <tr><td>M1: %MAKETEXT{"Feasibility and planning"}%</td><td>%RENDERFOREDIT{field="M1DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="M1Done" format="$edit"}% </td></tr>
 <tr><td>M2: %MAKETEXT{"Realisation product design"}%</td><td>%RENDERFOREDIT{field="M2DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="M2Done" format="$edit"}% </td></tr>
-<tr><td>M3: %MAKETEXT{"Planning product design"}%</td><td>%RENDERFOREDIT{field="M3DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="M3Done" format="$edit"}% </td></tr>
-<tr><td>M4: %MAKETEXT{"Realisation product design"}%</td><td>%RENDERFOREDIT{field="M4DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="M4Done" format="$edit"}% </td></tr>
+<tr><td>M3: %MAKETEXT{"Planning process design"}%</td><td>%RENDERFOREDIT{field="M3DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="M3Done" format="$edit"}% </td></tr>
+<tr><td>M4: %MAKETEXT{"Realisation process design"}%</td><td>%RENDERFOREDIT{field="M4DueDate" format="$edit"}%</td><td>%RENDERFOREDIT{field="M4Done" format="$edit"}% </td></tr>
 </table>
 </div>
 

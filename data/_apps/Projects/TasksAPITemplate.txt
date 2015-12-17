@@ -370,8 +370,8 @@
   <div class="viewer">
   %TABPANE{class="simple"}%
   %TAB{"%{
-      }%%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-primary\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%{
-      }%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-default\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%{
+      }%%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-default labelTaskpackage\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%{
+      }%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-primary labelMilestone\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%{
       }%%IF{"'%TASKINFO{field="Type"}%'='Task'" then="<span class=\"label label-info\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%{
       }%"
   }%%TMPL:P{"tasksapi::overlay::content::details"}%%ENDTAB%%{
@@ -498,7 +498,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
     </div>
   </td>
   <td class="number">
-      <span class="title">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
+      <span class="number">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
   </td>
   <td class="due" data-value="%TASKINFO{field="DueDate"}%">
     <span>%TASKINFO{field="DueDate" format="$day $month $year"}%</span>
@@ -533,7 +533,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
     </div>
   </td>
   <td class="number">
-      <span class="title">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
+      <span class="number">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
   </td>
   <td class="due" data-value="%TASKINFO{field="DueDate"}%">
     <span>%TASKINFO{field="DueDate" format="$day $month $year"}%</span>
@@ -700,7 +700,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
     <span>%TASKINFO{field="Author" user="1"}%</span>
     <span><a href="%SCRIPTURL{"view"}%/%TASKINFO{field="Context"}%%IF{"'%TASKINFO{field="Status"}%'='closed'" then="?tab=tasks_closed"}%">%TASKINFO{field="Context"}%</a></span>
   </td>
-  <td class="type">%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-primary\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-default\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Task'" then="<span class=\"label label-info\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%</td>
+  <td class="type">%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-primary labelMilestone\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-default labelTaskpackage\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Task'" then="<span class=\"label label-info\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%</td>
   <td class="title">
     <div>
       <span class="title">%TASKINFO{field="Title" shorten="160"}%</span>

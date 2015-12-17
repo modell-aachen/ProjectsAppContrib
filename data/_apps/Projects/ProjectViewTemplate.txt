@@ -42,7 +42,7 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 <div class="widgetBlockContent">
 <div style="float:left;width:32%">
 <table class="metaDataHead">
-<tr><td>%MAKETEXT{"Project name"}%:</td><td width="300px">%RENDERFORDISPLAY{field="ProjectTitle" format="$value"}%</td></tr>
+<tr><td>%MAKETEXT{"Project name"}%:</td><td width="300px">%RENDERFORDISPLAY{field="ProjectName" format="$value"}%</td></tr>
 <tr><td>%MAKETEXT{"Project number"}%:</td><td>%RENDERFORDISPLAY{field="ProjectNumber" format="$value"}%</td></tr>
 </table>
 </div>
