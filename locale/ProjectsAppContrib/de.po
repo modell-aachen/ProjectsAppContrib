@@ -250,3 +250,14 @@ msgstr "Projektnummer"
 msgid "Project members"
 msgstr "Projektmitglieder"
 
+msgid "Closed projects"
+msgstr "Abgeschlossene Projekte"
+
+msgid "Open projects"
+msgstr "Offene Projekte"
+
+msgid "Project leader"
+msgstr "Projektleiter"
+
+msgid "Milestone"
+msgstr "Meilenstein"

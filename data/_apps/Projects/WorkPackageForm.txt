@@ -7,7 +7,7 @@
 | Created | date | 10 | %GMTIME{"$epoch"}% | Time of creation | M H |
 | Changed | date | 10 | %GMTIME{"$epoch"}% | Time of most recent change | H |
 | Closed | date | 10 | | | H |
-| Status | select+values | | %MAKETEXT{"open"}%=open,%MAKETEXT{"closed"}%=closed,%MAKETEXT{"deleted"}%=deleted | Status | |
+| Status | select+values | | %MAKETEXT{"open"}%=open,%MAKETEXT{"closed"}%=closed | Status | |
 | Title | text | 80 | | Title | M |
 | AssignedTo | user | 20 | | Assigned to | M |
 | Description | taskeditor | 50 | | Description | |

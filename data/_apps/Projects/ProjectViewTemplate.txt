@@ -96,6 +96,7 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %STARTSECTION{"tasksgrid"}%
 %TASKSGRID{
 "%state%"
+order="TaskNumber"
 form="%WEB%.WorkPackageForm"
 templatefile="%WEB%.TasksAPITemplate"
 depth="1"}%

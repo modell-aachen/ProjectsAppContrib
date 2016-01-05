@@ -179,6 +179,12 @@
     <span class="title" title="%TASKINFO{field="Title" task="%taskeditor_task%"}%">
 %RENDERFOREDIT{
   form="%taskeditor_form%"
+  fields="Type"
+  header=""
+  footer=""
+}%
+%RENDERFOREDIT{
+  form="%taskeditor_form%"
   fields="Title"
   header=""
   footer=""
@@ -578,11 +584,11 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
 
 %{title and filter (select) areas}%
 %TMPL:DEF{"tasksapi::grid::filter"}%%{
-}%<div class="filter no-print">
-  <div>
-    <div class="options">
-      <span class="title">$grid_title</span>%{
-      }%%TWISTY{id="%TASKINFO{expand="id"}%-filter-%WEB%-%TOPIC%" showlink="%MAKETEXT{"Show filter"}%" hidelink="%MAKETEXT{"Hide filter"}%" remember="on"}%%{
+}%<div class="filter no-print">%{
+  }%<div>%{
+    }%<div class="options">
+      %{<span class="title">$grid_title</span>}%%{
+      }%%TWISTY{id="%TASKINFO{expand="id"}%-filter-%WEB%-%TOPIC%" showlink="%MAKETEXT{"Show filter"}%" hidelink="%MAKETEXT{"Hide filter"}%" remember="on" linkclass="btn-filter"}%%{
       }%%TMPL:P{"tasksapi::grid::filter::collection"}%%{
       }%%ENDTWISTY%%{
     }%</div>%{
@@ -593,7 +599,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
 
 %{filter templates}%
 %TMPL:DEF{"tasksapi::grid::filter::collection"}%%{
-}%%TMPL:P{"tasksapi::grid::filter::status"}%%{
+}%<p/>%TMPL:P{"tasksapi::grid::filter::status"}%%{
 }%%TMPL:P{"tasksapi::grid::filter::type"}%%{
 }%%TMPL:P{"tasksapi::grid::filter::created"}%%{
 }%%TMPL:P{"tasksapi::grid::filter::changed"}%%{
@@ -627,7 +633,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
 
 %{the button used to create a new grid entry}%
 %TMPL:DEF{"tasksapi::grid::filter::create"}%%{
-}%<div class="create">
+}%<div class="create" style="margin-top: 9px;">
   <a href="#" class="tasks-btn-create"><i class="fa fa-plus"></i>$create_text</a>
 </div><span class="clear"></span>%{
 }%%TMPL:END%
@@ -642,7 +648,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
   <th data-sort="Title">%MAKETEXT{"Title"}%</th>
   <th data-sort="TaskNumber">%MAKETEXT{"Task number"}%</th>
   <th data-sort="DueDate">%MAKETEXT{"Due date"}%</th>
-  <th data-sort="Status">%MAKETEXT{"Status"}%</th>%{
+  <th>%MAKETEXT{"Status"}%</th>%{
   }%%IF{"not context task_readonly" then="<td class=\"no-print\"></td>"}%%{
   }%<th class="hidden"></th>
   <th class="hidden"></th>
