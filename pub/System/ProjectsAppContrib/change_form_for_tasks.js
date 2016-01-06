@@ -1,6 +1,6 @@
 $(document).ready(function() {
-   $('.tasktracker')
-      .on('beforeCreate', function(e,t) {
+   $('.tasktracker').livequery( function() {
+      $(this).on('beforeCreate', function(e,t) {
          if(t.parent){
             t.form= foswiki.preferences.WEB+".TasksForm";
             t.depth=0;
@@ -8,11 +8,12 @@ $(document).ready(function() {
 
          return t;
       })
-      .on('beforeSave', function(e,t) {
+      $(this).on('beforeSave', function(e,t) {
          if (t.Parent){
             t.form= foswiki.preferences.WEB+".TasksForm";
          }
 
          return t;
       });
+   });
 });

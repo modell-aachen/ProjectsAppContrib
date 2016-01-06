@@ -588,7 +588,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
   }%<div>%{
     }%<div class="options">
       %{<span class="title">$grid_title</span>}%%{
-      }%%TWISTY{id="%TASKINFO{expand="id"}%-filter-%WEB%-%TOPIC%" showlink="%MAKETEXT{"Show filter"}%" hidelink="%MAKETEXT{"Hide filter"}%" remember="on" linkclass="btn-filter"}%%{
+      }%%TWISTY{id="%TASKINFO{expand="id"}%-filter-%WEB%-%TOPIC%" showlink="<i class=\"fa fa-arrow-down\"></i> %MAKETEXT{"Show filter"}%" hidelink="<i class=\"fa fa-arrow-up\"></i> %MAKETEXT{"Hide filter"}%" remember="on" linkclass="btn-filter filter"}%%{
       }%%TMPL:P{"tasksapi::grid::filter::collection"}%%{
       }%%ENDTWISTY%%{
     }%</div>%{

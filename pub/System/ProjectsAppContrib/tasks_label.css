@@ -14,3 +14,9 @@ a > span.label.labelTaskpackage{
  background-color: #3288BD;
  width: 75px;
 }
+i.fa.fa-arrow-up{
+ margin-right: 10px;
+}
+i.fa.fa-arrow-down{
+ margin-right: 10px;
+}
