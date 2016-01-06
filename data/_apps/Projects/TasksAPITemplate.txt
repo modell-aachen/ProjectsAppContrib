@@ -633,7 +633,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
 
 %{the button used to create a new grid entry}%
 %TMPL:DEF{"tasksapi::grid::filter::create"}%%{
-}%<div class="create" style="margin-top: 9px;">
+}%<div class="create" style="margin-top: 11px;">
   <a href="#" class="tasks-btn-create"><i class="fa fa-plus"></i>$create_text</a>
 </div><span class="clear"></span>%{
 }%%TMPL:END%
