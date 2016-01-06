@@ -34,7 +34,7 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %TMPL:DEF{"all_label"}%%MAKETEXT{"All tasks"}%%TMPL:END%
 
 %TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
-%ADDTOZONE{"script" requieres="JQUERYPLUGIN::FOSWIKI" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/change_form_for_tasks.js'></script>"}%
+%ADDTOZONE{"script" requires="TASKSAPI::SCRIPTS" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/change_form_for_tasks.js'></script>"}%
 %ADDTOZONE{"head" text="<style type='text/css' media='all'> @import url('%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/tasks_label.css'); </style>"}%
 %INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
 
