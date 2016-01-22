@@ -15,11 +15,13 @@
 | Informees | user+multi | 50 | | Persons to notify on changes | |
 | Reminder | select+values | | %MAKETEXT{"never"}%=Never,%MAKETEXT{"daily"}%=Daily,%MAKETEXT{"weekly"}%=Weekly,%MAKETEXT{"monthly"}%=Monthly | Send reminder | |
 | Prioritize | select+values | | %MAKETEXT{"no"}%=No,%MAKETEXT{"yes"}%=Yes | High priority | |
-| HasChildren | select+values | | %MAKETEXT{"no"}%=No,%MAKETEXT{"yes"}%=Yes | Divided into sub-tasks | |
 | Type | select+values | | %MAKETEXT{"Taskpackage"}%=Taskpackage,%MAKETEXT{"Milestone"}%=Milestone | Type | |
 | TaskNumber | text | | | Task number | |
 
    * Set NOWYSIWYG = 1
+   * Set ALLOWTOPICCHANGE = AdminUser
    * Set TASKCFG_HAS_CHILDREN = 1
-   * Set TASKCFG_TASK_TYPE = project
-   * Set TASKCFG_TASK_TEMPLATE_FILE = $formweb.TasksAPITemplate
+   * Set TASKCFG_TASK_TYPE = project_workpackage
+   * Set TASKCFG_TASK_TEMPLATE_FILE = $formweb.ProjectTaskViewTemplate
+   * Set TASKCFG_TASK_TEMPLATE = project::task
+   * Set TASKCFG_EDITOR_TEMPLATE = project::editor

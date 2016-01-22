@@ -77,19 +77,19 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 <div>
 %TABPANE{class="simple" select="%URLPARAM{"table"}%"}%
 %TAB{"%MAKETEXT{"Pre-Project phase"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%M0"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M0"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Feasibility and planning"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%M1"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M1"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Realisation product design"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%M2"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M2"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Planning process design"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%M3"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M3"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Realisation process design"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%TOPIC%M4"}%
+%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M4"}%
 %ENDTAB%
 %ENDTABPANE%
 </div>
@@ -99,7 +99,9 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 "%state%"
 order="TaskNumber"
 form="%WEB%.WorkPackageForm"
-templatefile="%WEB%.TasksAPITemplate"
+templatefile="%WEB%.ProjectTaskViewTemplate"
+captiontemplate="project::caption"
+filtertemplate="project::filter"
 depth="1"}%
 %ENDSECTION{"tasksgrid"}%
 </div>
