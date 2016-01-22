@@ -219,15 +219,45 @@ msgstr "Ersteller"
 msgid "Closed on"
 msgstr "Erledigt am"
 
+#: WorkPackageForm
+msgid "Taskpackage"
+msgstr "Aufgabenpaket"
 
+msgid "Pre-Project phase"
+msgstr "Vorprojektphase"
 
+msgid "Feasibility and planning"
+msgstr "Machbarkeit und Planung"
 
+msgid "Realisation product design"
+msgstr "Realisierung Produktentwicklung"
 
+msgid "Planning process design"
+msgstr "Planung Prozessentwicklung"
 
+msgid "Realisation process design"
+msgstr "Realisierung Prozessentwicklung"
 
+msgid "Task number"
+msgstr "Aufgabennummer"
 
+msgid "Project name"
+msgstr "Projektname"
 
+msgid "Project number"
+msgstr "Projektnummer"
 
+msgid "Project members"
+msgstr "Projektmitglieder"
 
+msgid "Closed projects"
+msgstr "Abgeschlossene Projekte"
 
+msgid "Open projects"
+msgstr "Offene Projekte"
 
+msgid "Project leader"
+msgstr "Projektleiter"
+
+msgid "Milestone"
+msgstr "Meilenstein"
