@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1449491702" format="1.1" version="12"}%
+| *Name* | *Type* | *Size* | *Values* | *Tooltip message* | *Attributes* |
+| TopicType | text | 10 | task | | M H |
+| Context | text | 10 | | | M H |
+| Parent | text | 10 | | | H |
+| Author | text | 10 | %RENDERUSER{format="$cUID"}% | Task "creator" | M H |
+| Created | date | 10 | %GMTIME{"$epoch"}% | Time of creation | M H |
+| Changed | date | 10 | %GMTIME{"$epoch"}% | Time of most recent change | H |
+| Closed | date | 10 | | | H |
+| Status | select+values | | %MAKETEXT{"open"}%=open,%MAKETEXT{"closed"}%=closed,%MAKETEXT{"deleted"}%=deleted | Status | |
+| Title | text | 80 | | Title | M |
+| AssignedTo | user | 20 | | Assigned to | M |
+| Description | taskeditor | 50 | | Description | |
+| DueDate | date2 | 10 | | Due | |
+| Informees | user+multi | 50 | | Persons to notify on changes | |
+| Reminder | select+values | | %MAKETEXT{"never"}%=Never,%MAKETEXT{"daily"}%=Daily,%MAKETEXT{"weekly"}%=Weekly,%MAKETEXT{"monthly"}%=Monthly | Send reminder | |
+| Prioritize | select+values | | %MAKETEXT{"no"}%=No,%MAKETEXT{"yes"}%=Yes | High priority | |
+| Type | select+values | | %MAKETEXT{"Task"}%=Task | Type | H |
+| TaskNumber | text | | | Task Number | H |
+
+
+   * Set NOWYSIWYG = 1
+   * Set ALLOWTOPICCHANGE = AdminUser
+   * Set TASKCFG_HAS_CHILDREN = 0
+   * Set TASKCFG_TASK_TYPE = project_task
+   * Set TASKCFG_TASK_TEMPLATE_FILE = $formweb.ProjectTaskViewTemplate
+   * Set TASKCFG_TASK_TEMPLATE = project::tasknochild
+   * Set TASKCFG_EDITOR_TEMPLATE = project::editor

@@ -1,0 +1,27 @@
+td > span.label.labelMilestone{
+ background-color: #F46D43;
+ width: 75px;
+}
+td > span.label.labelTaskpackage{
+ background-color: #3288BD;
+ width: 75px;
+}
+a > span.label.labelMilestone{
+ background-color: #F46D43;
+ width: 75px;
+}
+a > span.label.labelTaskpackage{
+ background-color: #3288BD;
+ width: 75px;
+}
+i.fa.fa-arrow-up{
+ margin-right: 10px;
+}
+i.fa.fa-arrow-down{
+ margin-right: 10px;
+}
+
+.twistyRememberSetting.twistyTrigger.foswikiUnvisited.twistyInited0 > a:nth-child(1){
+   padding: 5px 10px;
+   font-size: 13px;
+}

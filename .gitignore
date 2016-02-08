@@ -1,3 +1,6 @@
 /ProjectsAppContrib*
 *.lease
 *.txt,v
+*,pfv/
+*~
+*.swp
