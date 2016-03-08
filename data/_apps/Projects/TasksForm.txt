@@ -1,7 +1,7 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1449491702" format="1.1" version="12"}%
 | *Name* | *Type* | *Size* | *Values* | *Tooltip message* | *Attributes* |
 | TopicType | text | 10 | task | | M H |
-| Context | text | 10 | | | M H |
+| Context | text | 10 | | Superior work package | M H |
 | Parent | text | 10 | | | H |
 | Author | text | 10 | %RENDERUSER{format="$cUID"}% | Task "creator" | M H |
 | Created | date | 10 | %GMTIME{"$epoch"}% | Time of creation | M H |

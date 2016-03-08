@@ -261,3 +261,9 @@ msgstr "Projektleiter"
 
 msgid "Milestone"
 msgstr "Meilenstein"
+
+msgid "Superior work package"
+msgstr "Übergeordnetes Arbeitspaket"
+
+msgid "Superior project"
+msgstr "Übergeordnetes Projekt"
