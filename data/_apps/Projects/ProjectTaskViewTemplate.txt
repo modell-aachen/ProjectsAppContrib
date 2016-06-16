@@ -76,7 +76,7 @@
         <i class="fa fa-calendar-plus-o"></i>
         <div>
           <span class="title">%MAKETEXT{"Created"}%</span>
-          <span>%DATE%</span>
+          <span>%MAKEDATE%</span>
         </div>
       </div>
       <div class="task-meta-entry">
