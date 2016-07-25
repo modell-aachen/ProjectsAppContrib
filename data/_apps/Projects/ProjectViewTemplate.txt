@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392307710" format="1.1" reprev="2" version="2"}%
+%META:TOPICINFO{author="qs01" comment="reprev" date="1459323598" format="1.1" reprev="2" version="24"}%
 %META:TOPICPARENT{name="WebHome"}%
 %TMPL:INCLUDE{view}%
 
@@ -34,7 +34,8 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %TMPL:DEF{"all_label"}%%MAKETEXT{"All tasks"}%%TMPL:END%
 
 %TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
-%ADDTOZONE{"script" requires="TASKSAPI::SCRIPTS" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/change_form_for_tasks.js'></script>"}%
+%AMCHART%
+%ADDTOZONE{"script" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/change_form_for_tasks.js'></script>"}%
 %ADDTOZONE{"head" text="<style type='text/css' media='all'> @import url('%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/tasks_label.css'); </style>"}%
 %ADDTOZONE{ "head" id="FONTAWESOME" text="<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css\" />" }%
 %INCLUDE{"%SYSTEMWEB%/JSCalendarContribInline"}%
@@ -65,11 +66,12 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 <div class="widgetBlockTitle">Phasen</div>
 <div class="widgetBlockContent">
 <table class="metaDataHead">
-<tr><td width="200px">0: %MAKETEXT{"Pre-Project phase"}%</td><td width="200px">%RENDERFORDISPLAY{field="M0DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M0Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M1: %MAKETEXT{"Feasibility and planning"}%</td><td>%RENDERFORDISPLAY{field="M1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M2: %MAKETEXT{"Realisation product design"}%</td><td>%RENDERFORDISPLAY{field="M2DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M2Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M3: %MAKETEXT{"Planning process design"}%</td><td>%RENDERFORDISPLAY{field="M3DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M3Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M4: %MAKETEXT{"Realisation process design"}%</td><td>%RENDERFORDISPLAY{field="M4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><th width="200px" align="left">Phasenbezeichnung</th><th width="200px" align="left">Startdatum</th><th width="200px" align="left">Enddatum</th><th align="left">Erledigt</th></tr>
+<tr><td width="200px">0: %MAKETEXT{"Pre-Project phase"}%</td><td width="200px">%RENDERFORDISPLAY{field="M0StartDate" format="$value"}%</td><td width="200px">%RENDERFORDISPLAY{field="M0DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M0Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M1: %MAKETEXT{"Feasibility and planning"}%</td><td>%RENDERFORDISPLAY{field="M1StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M2: %MAKETEXT{"Realisation product design"}%</td><td>%RENDERFORDISPLAY{field="M2StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M2DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M2Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M3: %MAKETEXT{"Planning process design"}%</td><td>%RENDERFORDISPLAY{field="M3StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M3DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M3Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M4: %MAKETEXT{"Realisation process design"}%</td><td>%RENDERFORDISPLAY{field="M4StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 </table>
 </div>
 
@@ -102,8 +104,28 @@ form="%WEB%.WorkPackageForm"
 templatefile="%WEB%.ProjectTaskViewTemplate"
 captiontemplate="project::caption"
 filtertemplate="project::filter"
+query="{\"form\":\"%WEB%.WorkPackageForm\"}"
 depth="1"}%
 %ENDSECTION{"tasksgrid"}%
+</div>
+
+<div class="widgetBlockTitle">Gantt</div>
+<div class="widgetBlockContent">
+<div>
+<span>
+<select id="ganttSelect">
+<option value="coarse">%MAKETEXT{"Coarse"}%</option>
+<option value="detailed">%MAKETEXT{"Detailed"}%</option>
+<option value="full">%MAKETEXT{"Full"}%</option>
+</select>
+<a id="ganttJson" href="" title="Download JSON"><i class="fa fa-save fa-lg" aria-hidden="true"></i></a>
+<a id="ganttRefresh" href="#" title="Refresh"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i></a>
+<i class="gantt-loading fa fa-spinner fa-spin fa-lg" aria-hidden="true"></i>
+</span>
+</div>
+<div id="ganttChart" style="width:100%; height:500px;">
+</div>
+</div>
 </div>
 %TMPL:END%
 

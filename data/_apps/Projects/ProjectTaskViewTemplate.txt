@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1449484806" format="1.1" version="6"}%
+%META:TOPICINFO{author="edv02" comment="" date="1460104502" format="1.1" version="5"}%
 %{<verbatim>}%
 
 %{
@@ -12,16 +12,20 @@
 }%%TASKSFILTER{"Type"}%%{
 }%%TASKSFILTER{"Created" range="1" max="true"}%%{
 }%%TASKSFILTER{"Changed" range="1" max="true"}%%{
+}%%TASKSFILTER{"Prioritize"}%%{
+}%%TASKSFILTER{"Category"}%%{
 }%%TMPL:END%
 
 
 %{the grid's caption area}%
 %TMPL:DEF{"project::caption"}%<tr>%{
 }%%IF{"context task_showexpandercol" then="<th class=\"no-print\"></th>"}%%{
-}%<th data-sort="Created">%MAKETEXT{"Created"}%</th>
+}%<th data-sort="Prioritize">%MAKETEXT{"Prio"}%</th>
+  <th data-sort="Created">%MAKETEXT{"Created"}%</th>
   <th>%MAKETEXT{"Type"}%</th>
   <th data-sort="AssignedTo">%MAKETEXT{"Assigned to"}%</th>
   <th data-sort="Title">%MAKETEXT{"Title"}%</th>
+  <th data-sort="Category" style="width:100px">%MAKETEXT{"Category"}%</th>
   <th data-sort="TaskNumber">%MAKETEXT{"Task number"}%</th>
   <th data-sort="DueDate">%MAKETEXT{"Due date"}%</th>
   <th>%MAKETEXT{"Status"}%</th>%{
@@ -76,7 +80,7 @@
         <i class="fa fa-calendar-plus-o"></i>
         <div>
           <span class="title">%MAKETEXT{"Created"}%</span>
-          <span>%MAKEDATE%</span>
+          <span>%DATE%</span>
         </div>
       </div>
       <div class="task-meta-entry">
@@ -89,11 +93,26 @@
       <div class="task-meta-entry">
         <i class="fa fa-angle-double-right"></i>
         <div>
-          <span class="title">%MAKETEXT{"Assigned to"}%</span>
+          <span class="title">%MAKETEXT{"Assigned to"}%%RED% *%ENDCOLOR%</span>
           <span>
 %RENDERFOREDIT{
   form="%taskeditor_form%"
   fields="AssignedTo"
+  format="$edit"
+  header=""
+  footer=""
+}%
+          </span>
+        </div>
+      </div>
+      <div class="task-meta-entry">
+        <i class="fa fa-calendar"></i>
+        <div>
+          <span class="title">%MAKETEXT{"Start date"}%</span>
+          <span>
+%RENDERFOREDIT{
+  form="%taskeditor_form%"
+  fields="StartDate"
   format="$edit"
   header=""
   footer=""
@@ -127,6 +146,21 @@
     <div class="content">
     <div class="meta">
       <div class="task-meta-entry">
+        <i class="fa fa-tags"></i>
+        <div>
+          <span class="title">%MAKETEXT{"Category"}%</span>
+          <span>
+%RENDERFOREDIT{
+  form="%taskeditor_form%"
+  fields="Category"
+  format="$edit"
+  header=""
+  footer=""
+}%
+          </span>
+        </div>
+      </div>
+      <div class="task-meta-entry">
         <i class="fa fa-group"></i>
         <div>
           <span class="title">%MAKETEXT{"Informees"}%</span>
@@ -149,21 +183,6 @@
 %RENDERFOREDIT{
   form="%taskeditor_form%"
   fields="TaskNumber"
-  format="$edit"
-  header=""
-  footer=""
-}%
-          </span>
-        </div>
-      </div>
-      <div class="task-meta-entry">
-        <i class="fa fa-lightbulb-o"></i>
-        <div>
-          <span class="title">%MAKETEXT{"Reminder"}%</span>
-          <span>
-%RENDERFOREDIT{
-  form="%taskeditor_form%"
-  fields="Reminder"
   format="$edit"
   header=""
   footer=""
@@ -243,11 +262,26 @@
       <div class="task-meta-entry">
         <i class="fa fa-angle-double-right"></i>
         <div>
-          <span class="title">%MAKETEXT{"Assigned to"}%</span>
+          <span class="title">%MAKETEXT{"Assigned to"}%%RED% *%ENDCOLOR%</span>
           <span>
 %RENDERFOREDIT{
   form="%taskeditor_form%"
   fields="AssignedTo"
+  format="$edit"
+  header=""
+  footer=""
+}%
+          </span>
+        </div>
+      </div>
+      <div class="task-meta-entry">
+        <i class="fa fa-calendar"></i>
+        <div>
+          <span class="title">%MAKETEXT{"Start date"}%</span>
+          <span>
+%RENDERFOREDIT{
+  form="%taskeditor_form%"
+  fields="StartDate"
   format="$edit"
   header=""
   footer=""
@@ -281,6 +315,21 @@
   <div class="content">
     <div class="meta">
       <div class="task-meta-entry">
+        <i class="fa fa-tags"></i>
+        <div>
+          <span class="title">%MAKETEXT{"Category"}%</span>
+          <span>
+%RENDERFOREDIT{
+  form="%taskeditor_form%"
+  fields="Category"
+  format="$edit"
+  header=""
+  footer=""
+}%
+          </span>
+        </div>
+      </div>
+      <div class="task-meta-entry">
         <i class="fa fa-group"></i>
         <div>
           <span class="title">%MAKETEXT{"Informees"}%</span>
@@ -303,21 +352,6 @@
 %RENDERFOREDIT{
   form="%taskeditor_form%"
   fields="TaskNumber"
-  format="$edit"
-  header=""
-  footer=""
-}%
-          </span>
-        </div>
-      </div>
-      <div class="task-meta-entry">
-        <i class="fa fa-lightbulb-o"></i>
-        <div>
-          <span class="title">%MAKETEXT{"Reminder"}%</span>
-          <span>
-%RENDERFOREDIT{
-  form="%taskeditor_form%"
-  fields="Reminder"
   format="$edit"
   header=""
   footer=""
@@ -380,7 +414,7 @@
 %{task details definitions}%
 %TMPL:DEF{"project::overlay::content::details"}%%{
 }%<div class="task-details">
-  <div class="caption %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize"}%">
+  <div class="caption %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize" else="prioritize-%TASKINFO{field="Prioritize"}%"}%">
     <div class="title view-only">
       <span class="title" title="%TASKINFO{field="Title"}%">%TASKINFO{field="Title" shorten="90"}%</span>
     </div>%{
@@ -418,6 +452,13 @@
           <span>%TASKINFO{field="DueDate" format="$day $month $year"}%&nbsp;</span>
         </div>
       </div>
+      <div class="task-meta-entry">
+        <i class="fa fa-tags"></i>
+        <div>
+          <span class="title">%MAKETEXT{"Category"}%</span>
+          <span>%TASKINFO{field="Category"}%</span>
+        </div>
+      </div>
     </div>
     <div class="description">
       <article>%TASKINFO{field="Description"}%</article>
@@ -433,7 +474,7 @@
 %TMPL:DEF{"project::overlay::content::attachments"}%%{
 }%%TAB{"%MAKETEXT{Attachments}% (%TASKINFO{meta="AttachCount"}%)"}%
 <div class="task-details attachments">
-  <div class="caption %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize"}%">
+  <div class="caption %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize" else="prioritize-%TASKINFO{field="Prioritize"}%"}%">
     <div class="title view-only">
       <span class="title" title="%TASKINFO{field="Title"}%">%TASKINFO{field="Title" shorten="90"}%</span>
     </div>%{
@@ -472,13 +513,14 @@
 
 %{a single task entry within the grid}%
 %TMPL:DEF{"project::task"}%%{
-}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize"}%">
+}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize" else="prioritize-%TASKINFO{field="Prioritize"}%"}%">
 %IF{"context task_showexpander and '%TASKINFO{taskcfg="HAS_CHILDREN"}%'='1'"
 then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
    then=\"<td class\\"no-print\\"></td>\"
    else=\"<td class=\\"expander no-print\\"><span class=\\"open\\">$percntICON{\"toggleopen\"}$percnt</span><span class=\\"close\\">$percntICON{\"toggleclose\"}$percnt</span></td>\"
 }$percnt"}%%{
-}%<td class="created" data-value="%TASKINFO{field="Created"}%">
+}%<td style="width:40px">%IF{"'%TASKINFO{field="Prioritize"}%'!='No'" then="%TASKINFO{field="Prioritize"}%"}%</td>
+  <td class="created" data-value="%TASKINFO{field="Created"}%">
     <span>%TASKINFO{field="Created" format="$day $month $year"}%</span>
     <span>%TASKINFO{field="Author" user="1"}%</span>
   </td>
@@ -492,6 +534,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
       <span class="attachments no-print %IF{"'%TASKINFO{meta="AttachCount"}%'='0'" then="hidden"}%">%TASKINFO{meta="AttachCount"}%</span>
     </div>
   </td>
+  <td><span>%TASKINFO{field="Category"}%</span></td>
   <td class="number">
       <span class="number">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
   </td>
@@ -511,9 +554,10 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
 
 %{a single task entry within the grid}%
 %TMPL:DEF{"project::tasknochild"}%%{
-}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize"}%">
+}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize" else="prioritize-%TASKINFO{field="Prioritize"}%"}%">
 %IF{"context task_showexpander and '%TASKINFO{taskcfg="HAS_CHILDREN"}%'='1'" then="<td class=\"expander no-print\"><span class=\"open\">$percntICON{\"toggleopen\"}$percnt</span><span class=\"close\">$percntICON{\"toggleclose\"}$percnt</span></td>"}%%{
-}%<td class="created" data-value="%TASKINFO{field="Created"}%">
+}%<td style="width:40px">%IF{"'%TASKINFO{field="Prioritize"}%'!='No'" then="%TASKINFO{field="Prioritize"}%"}%</td>
+  <td class="created" data-value="%TASKINFO{field="Created"}%">
     <span>%TASKINFO{field="Created" format="$day $month $year"}%</span>
     <span>%TASKINFO{field="Author" user="1"}%</span>
   </td>
@@ -527,6 +571,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
       <span class="attachments no-print %IF{"'%TASKINFO{meta="AttachCount"}%'='0'" then="hidden"}%">%TASKINFO{meta="AttachCount"}%</span>
     </div>
   </td>
+  <td><span>%TASKINFO{field="Category"}%</span></td>
   <td class="number">
       <span class="number">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
   </td>
@@ -559,7 +604,8 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
 
 %{a single task entry within thegrid used by flavor "perspage"}%
 %TMPL:DEF{"project::task_perspage"}%%{
-}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize"}%">
+}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize" else="prioritize-%TASKINFO{field="Prioritize"}%"}%">
+  <td style="width:40px">%IF{"'%TASKINFO{field="Prioritize"}%'!='No'" then="%TASKINFO{field="Prioritize"}%"}%</td>
   <td class="created" data-value="%TASKINFO{field="Created"}%">
     <span>%TASKINFO{field="Created" format="$day $month $year"}%</span>
     <span>%TASKINFO{field="Author" user="1"}%</span>
@@ -579,6 +625,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
       </span>
     </div>
   </td>
+  <td><span>%TASKINFO{field="Category"}%&nbsp;</span></td>
   <td class="due" data-value="%TASKINFO{field="DueDate"}%">
     <span>%TASKINFO{field="DueDate" format="$day $month $year"}%</span>
   </td>
@@ -593,7 +640,8 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
 
 
 %TMPL:DEF{"project::tasknochild_perspage"}%%{
-}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize"}%">
+}%<tr class="task %IF{"'%TASKINFO{field="Prioritize"}%'='Yes'" then="prioritize" else="prioritize-%TASKINFO{field="Prioritize"}%"}%">
+  <td style="width:40px">%IF{"'%TASKINFO{field="Prioritize"}%'!='No'" then="%TASKINFO{field="Prioritize"}%"}%</td>
   <td class="created" data-value="%TASKINFO{field="Created"}%">
     <span>%TASKINFO{field="Created" format="$day $month $year"}%</span>
     <span>%TASKINFO{field="Author" user="1"}%</span>
@@ -613,6 +661,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
       </span>
     </div>
   </td>
+  <td><span>%TASKINFO{field="Category"}%&nbsp;</span></td>
   <td class="due" data-value="%TASKINFO{field="DueDate"}%">
     <span>%TASKINFO{field="DueDate" format="$day $month $year"}%</span>
   </td>
