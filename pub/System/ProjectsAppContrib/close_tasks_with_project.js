@@ -1,5 +1,10 @@
 (function($) {
 $(function(){
+	if(typeof(foswiki.preferences["CLOSE_TASKS_NOTIFICATION_ON_PROJECT_CLOSE"]) !== "undefined" &&
+		foswiki.preferences["CLOSE_TASKS_NOTIFICATION_ON_PROJECT_CLOSE"] === "0"){
+		return;
+	}
+
 	var taskCloseAnswered = false;
 	var isAlreadyClosed = ($("[name='Status']").val() === "closed");
 	if(isAlreadyClosed)
