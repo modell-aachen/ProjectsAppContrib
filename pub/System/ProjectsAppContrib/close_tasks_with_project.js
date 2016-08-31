@@ -18,7 +18,7 @@ $(function(){
 			if(taskCloseAnswered)
 				return true;
 			swal({
-		        title: jsi18n.get('projectsapp', 'Close all project tasks?'),
+		        title: jsi18n.get('projectsapp', 'Close project tasks?'),
 		        text: jsi18n.get('projectsapp', 'You are about to close this project. Would you also like to close all associated tasks?'),
 		        type: 'info',
 		        showCancelButton: true,
