@@ -5,7 +5,13 @@ $(function(){
 	if(isAlreadyClosed)
 		return;
 
+	$(".foswikiSubmit").click(function(){
+		$(this).addClass("clicked");
+	});
+
 	$("[name='main']").on('submit', function(evt){
+		if(!$(".foswikiSubmit").hasClass("clicked"))
+			return true;
 		if(foswiki.Edit.isValidateMandatoryFieldsFailed)
 			return false;
 		if($("[name='Status']").val() === "closed"){
