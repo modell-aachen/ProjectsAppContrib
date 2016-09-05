@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   $('.tasktracker').livequery( function() {
+   $('.tasktracker:visible').livequery( function() {
       $(this).on('beforeCreate', function(e,t) {
          if(t.parent){
             t.form= foswiki.preferences.WEB+".TasksForm";
