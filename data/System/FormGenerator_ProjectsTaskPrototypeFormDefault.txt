@@ -1,0 +1,4 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1469775846" format="1.1" version="2"}%
+%INCLUDE{FormGenerator_ProjectsTaskFormDefault}%
+%META:PREFERENCE{name="FormGenerator_ExpandMacros" title="FormGenerator_ExpandMacros" type="Set" value="1"}%
+%META:PREFERENCE{name="FormGenerator_TargetFormGroup" title="FormGenerator_TargetFormGroup" type="Set" value="ProjectsAppTaskPrototype"}%

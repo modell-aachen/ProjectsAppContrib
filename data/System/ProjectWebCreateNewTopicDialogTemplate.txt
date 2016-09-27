@@ -1,0 +1,28 @@
+%TMPL:INCLUDE{"WebCreateNewTopicDialog"}%
+
+%TMPL:DEF{"dialogtitle"}%%MAKETEXT{"Create new project"}%%TMPL:END%
+%TMPL:DEF{"submittitle"}%%MAKETEXT{"Create new project"}%%TMPL:END%
+
+%TMPL:DEF{"topicparentstep"}%%TMPL:END%
+%TMPL:DEF{"topicnamestep"}%%TMPL:END%
+
+%{<verbatim class="tml">}%
+%TMPL:DEF{"topictemplate"}%<!-- -->
+<select name="templatetopic" class="jqSelect2" style="width:98%;">
+<option value="%SYSTEMWEB%.ProjectTemplate">%MAKETEXT{"Empty project"}%</option>
+%SOLRSEARCH{
+  "web:%WEB% form:*ProjectForm topic:ProjectPrototype* type:topic"
+  fields="webtopic, title"
+  rows="9999999"
+  format="<option value=\"$webtopic\">$title</option>"
+  separator="$n"
+}%
+</select>
+<!-- -->%TMPL:END%
+%{</verbatim>}%
+
+%TMPL:DEF{"formend"}%%{
+}%<input type="hidden" name="topic" value="ProjectAUTOINC0000" />
+<input type="hidden" name="formtemplate" value="ProjectForm" />
+<input type="hidden" name="template" value="ProjectEdit" />%{
+}%%TMPL:PREV%%TMPL:END%

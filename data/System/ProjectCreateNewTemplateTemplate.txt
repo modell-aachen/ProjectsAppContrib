@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1453892100" format="1.1" version="1"}%
+
+
+%META:FORM{name="ProjectForm"}%
+%META:FIELD{name="TopicTitle" title="TopicTitle" value="ModacSkinTopHeadTemplate"}%
+%META:FIELD{name="ShortDescription" title="ShortDescription" value=""}%
+%META:FIELD{name="ProjectAim" title="ProjectAim" value=""}%
+%META:FIELD{name="CostCenter" title="CostCenter" value=""}%
+%META:FIELD{name="Budget" title="Budget" value=""}%
+%META:FIELD{name="ProjectLeader" title="ProjectLeader" value=""}%
+%META:FIELD{name="Status" title="Status" value="open"}%
+%META:FIELD{name="MS1DueDate" title="MS1DueDate" value=""}%
+%META:FIELD{name="MS1Done" title="MS1Done" value=""}%
+%META:FIELD{name="MS2DueDate" title="MS2DueDate" value=""}%
+%META:FIELD{name="MS2Done" title="MS2Done" value=""}%
+%META:FIELD{name="MS3DueDate" title="MS3DueDate" value=""}%
+%META:FIELD{name="MS3Done" title="MS3Done" value=""}%
+%META:FIELD{name="MS4DueDate" title="MS4DueDate" value=""}%
+%META:FIELD{name="MS4Done" title="MS4Done" value=""}%
+%META:FIELD{name="MS5DueDate" title="MS5DueDate" value=""}%
+%META:FIELD{name="MS5Done" title="MS5Done" value=""}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="ProjectView"}%
+%META:PREFERENCE{name="EDIT_TEMPLATE" title="EDIT_TEMPLATE" type="Set" value="ProjectEdit"}%
+%META:PREFERENCE{name="EarlySetField" title="EarlySetField" type="Set" value="%22Responsible = %22,%22TopicTitle=%22"}%
+%META:PREFERENCE{name="EarlySetForm" title="EarlySetForm" type="Set" value="%25WEB%25.ProjectForm"}%
+%META:PREFERENCE{name="SetForm" title="SetForm" type="Set" value="%25WEB%25.ProjectForm"}%
+%META:PREFERENCE{name="SetPref" title="SetPref" type="Set" value="%22CONTENT_LANGUAGE=%25URLPARAM%7bcontentlanguage%7d%25%22,%22EarlySetField=$quotResponsible=$quot,$quotTopicTitle=$quot%22,%22RemoveMeta=COMMENT%22"}%
+

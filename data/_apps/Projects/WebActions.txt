@@ -1,5 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" date="1404725578" format="1.1" version="2"}%
+%META:TOPICINFO{author="BaseUserMapping_333" date="1398171295" format="1.1" version="1"}%
 %META:TOPICPARENT{name="WebHome"}%
-   * <a href="%SCRIPTURLPATH{"edit"}%/%BASEWEB%/ProjectAUTOINC000?template=%WEB%.ProjectEdit;templatetopic=%WEB%.ProjectTemplate;formtemplate=ProjectForm;t=%GMTIME{$epoch}%">%MAKETEXT{"Create new project"}%</a>
-%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%
-%META:PREFERENCE{name="NOWYSIWYG" title="NOWYSIWYG" type="Set" value="1"}%
+   * <a class="modacNewLink" href="%SCRIPTURLPATH{"edit"}%/%BASEWEB%/ProjectAUTOINC0000?template=ProjectEdit;templatetopic=%SYSTEMWEB%.ProjectTemplate;formtemplate=ProjectForm;t=%GMTIME{$epoch}%;wcnttemplatename=ProjectWebCreateNewTopicDialog">%MAKETEXT{"Create new project"}%</a>%IF{
+   "'%PROJECT_ALLOW_CREATE_TEMPLATES{default=""}%'='' OR $USERNAME ingroup '%PROJECT_ALLOW_CREATE_TEMPLATES%'" then="$n   * <a href=\"%SCRIPTURLPATH{"edit"}%/%BASEWEB%/ProjectPrototypeAUTOINC0000?formtemplate=%BASEWEB%.ProjectForm;t=%GMTIME{"$epoch"}%;templatetopic=%SYSTEMWEB%.ProjectCreateNewTemplateTemplate;template=ProjectEdit\">%MAKETEXT{"Create new project template"}%</a>"}%

@@ -2,15 +2,27 @@ $(document).ready(function() {
    $('.tasktracker:visible').livequery( function() {
       $(this).on('beforeCreate', function(e,t) {
          if(t.parent){
-            t.form= foswiki.preferences.WEB+".TasksForm";
+            if(t.context.includes("Prototype")){
+                t.form= foswiki.preferences.WEB+".PrototypeTaskForm";
+            } else {
+                t.form= foswiki.preferences.WEB+".TaskForm";
+            }
             t.depth=0;
          }
 
          return t;
       })
       $(this).on('beforeSave', function(e,t) {
+         var opts = $(this).data('tasktracker_options');
+         var query = $.parseJSON(opts.query);
+         t.Milestone = query.Milestone;
          if (t.Parent){
-            t.form= foswiki.preferences.WEB+".TasksForm";
+             console.log(t.TopicType);
+            if(t.TopicType.includes("prototype")){
+                t.form= foswiki.preferences.WEB+".PrototypeTaskForm";
+            } else {
+                t.form= foswiki.preferences.WEB+".TaskForm";
+            }
          }
 
          return t;

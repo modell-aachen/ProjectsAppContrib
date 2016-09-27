@@ -1,12 +1,16 @@
 !noci
-data/_apps/Projects/CustomSkinActionformTemplate.txt 0644
-data/_apps/Projects/CustomSkinCommentPluginTemplate.txt 0644
-data/_apps/Projects/ProjectEditTemplate.txt 0644
-data/_apps/Projects/ProjectForm.txt 0644
-data/_apps/Projects/ProjectTemplate.txt 0644
-data/_apps/Projects/ProjectViewTemplate.txt 0644
-data/_apps/Projects/ProjectTaskViewTemplate.txt 0644
-data/_apps/Projects/TasksForm.txt 0644
+data/System/FormGenerator_ProjectsForm.txt 0644
+data/System/FormGenerator_ProjectsTaskFormDefault.txt 0644
+data/System/FormGenerator_ProjectsTaskPrototypeFormDefault.txt 0644
+data/System/FormGenerator_ProjectsTaskPrototypeFormDefault1.txt 0644
+data/System/FormGenerator_ProjectsWorkPackageFormDefault.txt 0644
+data/System/FormGenerator_ProjectsWorkPackagePrototypeFormDefault.txt 0644
+data/System/FormGenerator_ProjectsWorkPackagePrototypeFormDefault1.txt 0644
+data/System/ProjectEditTemplate.txt 0644
+data/System/ProjectTemplate.txt 0644
+data/System/ProjectViewTemplate.txt 0644
+data/System/ProjectWebCreateNewTopicDialogTemplate.txt 0644
+data/System/ProjectCreateNewTemplateTemplate.txt 0644
 data/_apps/Projects/WebActions.txt 06i44
 data/_apps/Projects/WebAtom.txt 0644
 data/_apps/Projects/WebChanges.txt 0644
@@ -21,7 +25,11 @@ data/_apps/Projects/WebSearchAdvanced.txt 0644
 data/_apps/Projects/WebSearch.txt 0644
 data/_apps/Projects/WebStatistics.txt 0644
 data/_apps/Projects/WebTopicList.txt 0644
-data/_apps/Projects/WorkPackageForm.txt 0644
+data/_apps/Projects/ProjectFormManager.txt 0644
+data/_apps/Projects/TaskFormManager.txt 0644
+data/_apps/Projects/PrototypeTaskFormManager.txt 0644
+data/_apps/Projects/WorkPackageFormManager.txt 0644
+data/_apps/Projects/PrototypeWorkPackageFormManager.txt 0644
 data/System/ProjectsAppContrib.txt 0644
 locale/ProjectsAppContrib/de.po 0644
 lib/Foswiki/Contrib/ProjectsAppContrib.pm 0644

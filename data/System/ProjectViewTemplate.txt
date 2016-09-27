@@ -7,11 +7,16 @@ then="$percntTMPL:P{\"modacNoAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%
 else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%section%\"}$percent"
 }% %TMPL:END%
 
+%TMPL:DEF{"printHeaderHeight"}%2.0cm%TMPL:END%
+%TMPL:DEF{"pdfexport"}%
+<span><a href="%SCRIPTURL{"view"}%/%SYSTEMWEB%/MAPrinceModPrintDialog?skin=text&section=dialog&pweb=%ENCODE{"%INCLUDINGWEB%" type="url"}%&ptopic=%ENCODE{"%INCLUDINGTOPIC%" type="url"}%&landscape=%LANDSCAPE{default="0"}%&printTasks=printTasks" class="jqUIDialogLink">%MAKETEXT{"PDF-Print"}%</a></span>
+%TMPL:END%
 
 %TMPL:DEF{"modacNoAjaxTab"}%%TAB{"%label%" id="%id%"}%
 %TMPL:P{"%section%"}%
 %ENDTAB%%TMPL:END%
 
+%TMPL:DEF{"top_simple"}%<div class="patternTop"><div id="modacHeading">%IF{"$TOPIC =~ '^ProjectPrototype'" then="<span style=\"color:red;\">%MAKETEXT{"Template"}%:</span>"}% %TOPICTITLE%</div><span class="patternHomePath">%TMPL:P{"breadcrumb"}%</span><br></div><!--/patternTop-->%TMPL:END%
 %{
  This will generate a tab that will fetch its contents via ajax. This tab can not be printed.
 
@@ -34,6 +39,7 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 %TMPL:DEF{"all_label"}%%MAKETEXT{"All tasks"}%%TMPL:END%
 
 %TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
+%AMCHART%
 %ADDTOZONE{"script" requires="TASKSAPI::SCRIPTS" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/change_form_for_tasks.js'></script>"}%
 %ADDTOZONE{"head" text="<style type='text/css' media='all'> @import url('%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/tasks_label.css'); </style>"}%
 %ADDTOZONE{ "head" id="FONTAWESOME" text="<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css\" />" }%
@@ -65,11 +71,12 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 <div class="widgetBlockTitle">Phasen</div>
 <div class="widgetBlockContent">
 <table class="metaDataHead">
-<tr><td width="200px">0: %MAKETEXT{"Pre-Project phase"}%</td><td width="200px">%RENDERFORDISPLAY{field="M0DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M0Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M1: %MAKETEXT{"Feasibility and planning"}%</td><td>%RENDERFORDISPLAY{field="M1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M2: %MAKETEXT{"Realisation product design"}%</td><td>%RENDERFORDISPLAY{field="M2DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M2Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M3: %MAKETEXT{"Planning process design"}%</td><td>%RENDERFORDISPLAY{field="M3DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M3Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
-<tr><td>M4: %MAKETEXT{"Realisation process design"}%</td><td>%RENDERFORDISPLAY{field="M4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><th width="200px" align="left">Phasenbezeichnung</th><th width="200px" align="left">Startdatum</th><th width="200px" align="left">Enddatum</th><th align="left">Erledigt</th></tr>
+<tr><td width="200px">0: %MAKETEXT{"Pre-Project phase"}%</td><td width="200px">%RENDERFORDISPLAY{field="M0StartDate" format="$value"}%</td><td width="200px">%RENDERFORDISPLAY{field="M0DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M0Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M1: %MAKETEXT{"Feasibility and planning"}%</td><td>%RENDERFORDISPLAY{field="M1StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M1DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M1Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M2: %MAKETEXT{"Realisation product design"}%</td><td>%RENDERFORDISPLAY{field="M2StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M2DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M2Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M3: %MAKETEXT{"Planning process design"}%</td><td>%RENDERFORDISPLAY{field="M3StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M3DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M3Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
+<tr><td>M4: %MAKETEXT{"Realisation process design"}%</td><td>%RENDERFORDISPLAY{field="M4StartDate" format="$value"}%</td><td>%RENDERFORDISPLAY{field="M4DueDate" format="$value"}%</td><td><input type="checkbox" %IF{"'%TOPIC%'/M4Done=~'done'" then="checked=$quotchecked$quot"}% DISABLED> %MAKETEXT{"done"}%</td></tr>
 </table>
 </div>
 
@@ -77,33 +84,62 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 <div>
 %TABPANE{class="simple" select="%URLPARAM{"table"}%"}%
 %TAB{"%MAKETEXT{"Pre-Project phase"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M0"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M0"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Feasibility and planning"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M1"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M1"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Realisation product design"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M2"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M2"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Planning process design"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M3"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M3"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Realisation process design"}%"}%
-%INCLUDE{"ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M4"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M4"}%
 %ENDTAB%
 %ENDTABPANE%
 </div>
 <div style="display:none;">
 %STARTSECTION{"tasksgrid"}%
 %TASKSGRID{
-"%state%"
+"%BASEWEB%.%BASETOPIC%"
+form="%BASEWEB%.%IF{"'%BASETOPIC%'~'*Prototype*'" then="Prototype"}%WorkPackageForm"
+captiontemplate="project::grid::caption"
+filtertemplate="project::grid::filter"
+template="project::grid"
+tasktemplate="project::task"
+templatefile="%BASEWEB%.TasksAPIProjectsTemplate"
+allowcreate="%IF{"'%QUERY{Status}%'='closed' OR '%QUERY{Status}%'='rejected'" then="0" else="1"}%"
+readonly="%IF{"'%QUERY{Status}%'='closed' OR '%QUERY{Status}%'='rejected'" then="1" else="0"}%"
+updateurl="%SCRIPTURL{rest}%/RenderPlugin/template?topic=%WEB%.%TOPIC%;name=ProjectView;expand=%22tasksgrid%22%20state%3D%22%state%%22"
 order="TaskNumber"
-form="%WEB%.WorkPackageForm"
-templatefile="%WEB%.ProjectTaskViewTemplate"
-captiontemplate="project::caption"
-filtertemplate="project::filter"
-depth="1"}%
+depth="1"
+query="{\"Milestone\":\"%state%\"%IF{"'%BASETOPIC%'~'*Prototype*'" then=",\\"TopicType\\":\\"task-prototype\\""}%}"
+}%
 %ENDSECTION{"tasksgrid"}%
+</div>
+%TMPL:P{"gantt"}%
+%TMPL:END%
+
+%TMPL:DEF{"gantt"}%
+<div class="widgetBlockTitle">Gantt</div>
+<div class="widgetBlockContent">
+<div>
+<span>
+<select id="ganttSelect">
+<option value="coarse">%MAKETEXT{"Coarse"}%</option>
+<option value="detailed">%MAKETEXT{"Detailed"}%</option>
+<option value="full">%MAKETEXT{"Full"}%</option>
+</select>
+<a id="ganttJson" href="" title="Download JSON"><i class="fa fa-save fa-lg" aria-hidden="true"></i></a>
+<a id="ganttRefresh" href="#" title="Refresh"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i></a>
+<i class="gantt-loading fa fa-spinner fa-spin fa-lg" aria-hidden="true"></i>
+</span>
+</div>
+<div id="ganttChart" style="width:100%; height:860px;">
+</div>
+</div>
 </div>
 %TMPL:END%
 

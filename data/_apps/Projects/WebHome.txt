@@ -61,6 +61,21 @@ rows="99999"
 %AMPEL{"SignalM4" WARN="%SIGNAL_PREWARNTIME{default="7"}%" DATE="M4-%MAKETEXT{"Realisation process design"}%" DST="M4-%MAKETEXT{"Realisation process design"}%" DONE="M4-%MAKETEXT{"Realisation process design"}%" COND="done"}%
 </div> </div></div></div></div>
 %ENDTAB%
+%TAB{"%MAKETEXT{"Project templates"}%"}%
+<table class="tablesorter"><thead>
+<tr><th>%MAKETEXT{"Title"}%</th><th>%MAKETEXT{"Short description"}%</th><th>%MAKETEXT{"Create"}%</th></tr>
+</thead><tbody>
+%SOLRSEARCH{
+   "topic:ProjectPrototype* -topic:*Template form:*ProjectForm type:topic web:%BASEWEB%"
+   fields="web, topic, title, field_ShortDescription_s"
+   header=""
+   format="<tr><td>[[$web.$topic][$title]]</td><td>$field_ShortDescription_s</td><td><a href=\"%SCRIPTURLPATH{"edit"}%/%BASEWEB%/ProjectAUTOINC0000?template=ProjectEdit;templatetopic=$web.$topic;formtemplate=ProjectForm;t=%GMTIME{$epoch}%\" title=\"%MAKETEXT{"Create new project from this template"}%\"><img src=\"%PUBURLPATH%/%SYSTEMWEB%/FamFamFamSilkIcons/page_copy.png\" /></a></td></tr>$n"
+   footer=""
+   rows="9999"
+   sort="topic asc"
+   }%
+   </tbody></table>
+   %ENDTAB%
 </div>
 </div>
 

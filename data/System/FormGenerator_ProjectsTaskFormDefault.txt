@@ -1,0 +1,41 @@
+| *Name* | *Type* | *Size* | *Values* | *Tooltip message* | *Attributes* | *Default* |
+| TopicType | text | 10 | task | | M H | |
+| Context | text | 10 | | Superior project | M H | |
+| Parent | text | 10 | | | H | |
+| Author | user | 10 | | Author | M H | @DELAYRENDERUSER{format="$cUID"}@DELAY |
+| Created | date2 | 10 | | %MAKETEXT{Time of creation}% | M H | @DELAYGMTIME{"$epoch"}@DELAY |
+| Changed | date2 | 10 | | Changed | H | @DELAYGMTIME{"$epoch"}@DELAY |
+| Closed | date2 | 10 | | | H | |
+| Status | select+values | | @DELAYMAKETEXT{"open"}@DELAY=open,@DELAYMAKETEXT{"closed"}@DELAY=closed,@DELAYMAKETEXT{"deleted"}@DELAY=deleted | Status | | |
+| Title | text | 95 | | Title | M | |
+| AssignedTo | user | 20 | | Assigned to | M | |
+| Description | taskeditor | 50 | | Description | | |
+| StartDate | date2 | 10 | | Start | | |
+| DueDate | date2 | 10 | | Due | | |
+| Informees | user+multi | 50 | | Persons to notify on changes | | |
+| Reminder | select+values | | %MAKETEXT{"never"}%=Never,%MAKETEXT{"daily"}%=Daily,%MAKETEXT{"weekly"}%=Weekly,%MAKETEXT{"monthly"}%=Monthly | Send reminder | | |
+| Prioritize | select+values | | @DELAYMAKETEXT{"no"}%=No,1=1,2=2,3=3 | High priority | | |
+| Type | select+values | | @DELAYMAKETEXT{"Task"}@DELAY=Task | Type | H | |
+| TaskNumber | text | | | Task number | EXTRA | |
+| Category | text | 50 | | Category | EXTRA | |
+| Milestone | text | 50 | | Milestone | H EXTRA | |
+
+   * Set ALLOWTOPICCHANGE = AdminUser
+   * Set NOWYSIWYG = 1
+   * Set TASKCFG_HAS_CHILDREN = 0
+   * Set TASKCFG_TASK_TYPE = project_task
+   * Set TASKCFG_OVERVIEW_FIELDS = CreatedAuthor,Type,AssignedTo,Title,DueDate,TaskLights
+   * Set TASKCFG_NOTIFY_CREATED = $curvalue(AssignedTo),$curvalue(Informees)
+   * Set TASKCFG_NOTIFY_REASSIGNED = $curvalue(AssignedTo),$curvalue(Author),$curvalue(Informees)
+   * Set TASKCFG_NOTIFY_REOPENED = $curvalue(AssignedTo),$curvalue(Author),$curvalue(Informees)
+   * Set TASKCFG_NOTIFY_CHANGED = $curvalue(AssignedTo),$curvalue(Author),$curvalue(Informees)
+   * Set TASKCFG_NOTIFY_CLOSED = $curvalue(AssignedTo),$curvalue(Author),$curvalue(Informees)
+   * Set TASKCFG_NOTIFY_REMIND = $curvalue(AssignedTo),$curvalue(Author),$curvalue(Informees)
+   * Set TASKCFG_SCHEDULE_REMIND = $curvalue(Reminder)
+   * Set TASKACL_VIEW = $curvalue(AssignedTo), $curvalue(Informees), $contextACL
+   * Set TASKACL_CHANGE = $curvalue(AssignedTo), $contextACL
+   * Set TASKCFG_TASK_TEMPLATE_FILE = @DELAYSYSTEMWEB@DELAY.ProjectTaskViewTemplate
+   * Set TASKCFG_EDITOR_TEMPLATE = project::editor
+
+%META:PREFERENCE{name="FormGenerator_TargetFormGroup" title="FormGenerator_TargetFormGroup" type="Set" value="ProjectsAppTask"}%
+%META:PREFERENCE{name="FormGenerator_SourceTopicForm" title="FormGenerator_SourceTopicForm" type="Set" value="TasksForm"}%
