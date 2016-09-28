@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1469777971" format="1.1" version="4"}%
+| *Name* | *Type* | *Size* | *Values* | *Tooltip message* | *Attributes* | *default* |
+| TopicType | text | 10 | task-prototype | | M H | task-prototype |
+| AssignedTo | user | 20 | | Assigned to |  | |
+
+   * Set TASKCFG_TASK_TYPE = project_task_prototype
+   * Set TASKCFG_INSTANTIATED_FORM = TaskForm
+
+%META:PREFERENCE{name="FormGenerator_TargetFormGroup" title="FormGenerator_TargetFormGroup" type="Set" value="ProjectsAppTaskPrototype"}%
+%META:PREFERENCE{name="FormGenerator_Priority" title="FormGenerator_Priority" type="Set" value="1"}%
+%META:PREFERENCE{name="FormGenerator_Order" title="FormGenerator_Order" type="Set" value="-1"}%
+
+
