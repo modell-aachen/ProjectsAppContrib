@@ -539,17 +539,17 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
     <span>%TASKINFO{field="Created" format="$day $month $year"}%</span>
     <span>%TASKINFO{field="Author" user="1"}%</span>
   </td>
-  <td class="type">%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-default labelTaskpackage\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-primary labelMilestone\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Task'" then="<span class=\"label label-info\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%</td>
+  <td class="type_2" width="89px">%IF{"'%TASKINFO{field="Type"}%'='Taskpackage'" then="<span class=\"label label-default labelTaskpackage\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Milestone'" then="<span class=\"label label-primary labelMilestone\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%%IF{"'%TASKINFO{field="Type"}%'='Task'" then="<span class=\"label label-info\">$percntMAKETEXT{$percntTASKINFO{field=\"Type\"}$percnt}$percnt</span>"}%</td>
   <td class="assigned">
     <span>%TASKINFO{field="AssignedTo" user="1"}%</span>
   </td>
-  <td class="title">
+  <td class="title" width="550px">
     <div>
-      <span class="title">%TASKINFO{field="Title" shorten="160"}%</span>
+      <span class="title">%TASKINFO{field="Title" shorten="60"}%</span>
       <span class="attachments no-print %IF{"'%TASKINFO{meta="AttachCount"}%'='0'" then="hidden"}%">%TASKINFO{meta="AttachCount"}%</span>
     </div>
   </td>
-  <td class="number">
+  <td class="number" width="160px">
       <span class="number">%TASKINFO{field="TaskNumber" shorten="10"}%</span>
   </td>
   <td style="width:100px"><span>%TASKINFO{field="Category"}%</span></td>
@@ -591,7 +591,7 @@ then="$percntIF{\"'$percntTASKINFO{field=\"Type\"}$percnt'='Milestone'\"
   </td>
   <td class="title">
     <div>
-      <span class="title">%TASKINFO{field="Title" shorten="160"}%</span>
+      <span class="title">%TASKINFO{field="Title" shorten="60"}%</span>
       <span class="attachments no-print %IF{"'%TASKINFO{meta="AttachCount"}%'='0'" then="hidden"}%">%TASKINFO{meta="AttachCount"}%</span>
     </div>
   </td>

@@ -36,13 +36,14 @@ $(function(){
 		      }, function(confirmed) {
 		      	taskCloseAnswered=true;
 		      	if(confirmed){
-		      		var contexts = [];
+                    var context = "" + foswiki.preferences.WEB + "." + foswiki.preferences.TOPIC;
+		      		var milestones = [];
 					for(var i = 0; i < 5; i++){
-						contexts.push("" + foswiki.preferences.WEB + "." + foswiki.preferences.TOPIC + "M" + i);
+						milestones.push("M" + i);
 					}
 					$('<input />').attr('type', 'hidden')
 						.attr('name', 'taskquery')
-						.attr('value', JSON.stringify({"Context": contexts}))
+						.attr('value', JSON.stringify({"Context": context, "Milestone": {"type": "like", "substrin": milestones}}))
 						.appendTo($("[name='main']"));
 
 					$('<input />').attr('type', 'hidden')

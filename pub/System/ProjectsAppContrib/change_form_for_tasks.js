@@ -15,7 +15,7 @@ $(document).ready(function() {
       $(this).on('beforeSave', function(e,t) {
          var opts = $(this).data('tasktracker_options');
          var query = $.parseJSON(opts.query);
-         t.Milestone = query.Milestone;
+         t.Milestone = ""+foswiki.preferences.WEB + "." + foswiki.preferences.TOPIC + query.Milestone.substring;
          if (t.Parent){
              console.log(t.TopicType);
             if(t.TopicType.includes("prototype")){

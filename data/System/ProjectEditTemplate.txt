@@ -1,5 +1,7 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1392307049" format="1.1" reprev="3" version="2"}%
 %META:TOPICPARENT{name="DokumentenForm"}%
+%JQREQUIRE{"jqp::sweetalert2"}%
+%ADDTOZONE{"script" id="PROJECTS::SCRIPTS::CLOSE" requires="JQUERYPLUGIN" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/ProjectsAppContrib/close_tasks_with_project.js'></script>"}%
 %ADDTOZONE{"script" id="MODAC::EDIT::CALDISABLE" requires="JQUERYPLUGIN::LIVEQUERY" text="<script type=\"text/javascript\">
 jQuery(function($) {
   $('.foswikiEditFormDateField').livequery(function() {$(this).attr('readonly', 'readonly');});

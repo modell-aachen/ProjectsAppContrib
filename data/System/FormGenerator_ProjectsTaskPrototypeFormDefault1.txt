@@ -4,7 +4,7 @@
 | AssignedTo | user | 20 | | Assigned to |  | |
 
    * Set TASKCFG_TASK_TYPE = project_task_prototype
-   * Set TASKCFG_INSTANTIATED_FORM = TaskForm
+   * Set TASKCFG_INSTANTIATED_FORM = TasksForm
 
 %META:PREFERENCE{name="FormGenerator_TargetFormGroup" title="FormGenerator_TargetFormGroup" type="Set" value="ProjectsAppTaskPrototype"}%
 %META:PREFERENCE{name="FormGenerator_Priority" title="FormGenerator_Priority" type="Set" value="1"}%
