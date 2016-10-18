@@ -84,19 +84,19 @@ else="$percntTMPL:P{\"modacAjaxTab\" label=\"%label%\" id=\"%id%\" section=\"%se
 <div>
 %TABPANE{class="simple" select="%URLPARAM{"table"}%"}%
 %TAB{"%MAKETEXT{"Pre-Project phase"}%"}%
-%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M0"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="M0"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Feasibility and planning"}%"}%
-%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M1"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="M1"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Realisation product design"}%"}%
-%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M2"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="M2"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Planning process design"}%"}%
-%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M3"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="M3"}%
 %ENDTAB%
 %TAB{"%MAKETEXT{"Realisation process design"}%"}%
-%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="%WEB%.%TOPIC%M4"}%
+%INCLUDE{"%SYSTEMWEB%.ProjectViewTemplate" section="tasksgrid" state="M4"}%
 %ENDTAB%
 %ENDTABPANE%
 </div>
